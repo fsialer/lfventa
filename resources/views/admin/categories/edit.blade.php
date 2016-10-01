@@ -15,7 +15,7 @@
 	  				{!!Form::textarea('description',$category->description,['class' => 'form-control','id'=>'description','placeholder'=>'Descripción'])!!}				   
 	  			</div>
 	  			<div class="form-group">
-	  				{!!Form::label('state', 'Tipo de Acceso', ['class' => 'mdl-textfield__label'])!!}
+	  				{!!Form::label('state', 'Estado', ['class' => 'mdl-textfield__label'])!!}
 	  				{!!Form::select('state', ['activo' => 'Activo', 'inactivo' => 'Inactivo'],$category->state,['class'=>'form-control','id'=>'state']);!!}	   
 	  			</div>
 	  			<div class="form-group texto-derecha">

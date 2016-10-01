@@ -5,9 +5,8 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 
 use App\Http\Requests;
-use App\User;
-
-class UsersController extends Controller
+use App\Provider;
+class ProvidersController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -16,8 +15,8 @@ class UsersController extends Controller
      */
     public function index()
     {
-        $users=User::orderBy('id','desc')->paginate(6);
-        return view('admin.users.index')->with('users',$users);
+        $providers=Provider::orderBy('id','desc')->paginate(6);
+        return view('admin.providers.index')->with('providers',$providers);
     }
 
     /**
@@ -27,7 +26,7 @@ class UsersController extends Controller
      */
     public function create()
     {
-         return view('admin.users.create');
+         return view('admin.providers.create');
     }
 
     /**
@@ -38,10 +37,10 @@ class UsersController extends Controller
      */
     public function store(Request $request)
     {
-        $user=new User($request->all());
-        $user->password=bcrypt($user->password);
-        $user->save();
-        return redirect()->route('users.index');
+        $provider=new Provider($request->all());
+        //dd($article);
+        $provider->save();
+        return redirect()->route('providers.index');
     }
 
     /**
@@ -63,8 +62,8 @@ class UsersController extends Controller
      */
     public function edit($id)
     {
-        $user=User::find($id);
-        return view('admin.users.edit')->with('user',$user);
+        $provider=Provider::find($id);
+        return view('admin.providers.edit')->with('provider',$provider);
     }
 
     /**
@@ -76,10 +75,10 @@ class UsersController extends Controller
      */
     public function update(Request $request, $id)
     {
-        $user=User::find($id);
-        $user->fill($request->all());
-        $user->save();
-         return redirect()->route('users.index');
+        $provider=Provider::find($id);
+        $provider->fill($request->all());
+        $provider->save();
+        return redirect()->route('providers.index');
     }
 
     /**
@@ -90,9 +89,8 @@ class UsersController extends Controller
      */
     public function destroy($id)
     {
-        $user=User::find($id);
-        $user->delete();
-      
-        return redirect()->route("users.index");
+        $provider=Provider::find($id);
+        $provider->delete();      
+        return redirect()->route("providers.index");
     }
 }

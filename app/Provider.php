@@ -8,7 +8,7 @@ class Provider extends Model
 {
     protected $table="providers";
 
-    protected $fillable=['company','contact','phone','email'];
+    protected $fillable=['company','contact','phone','email','state'];
     public function entries(){
     	return $this->hasMany('App\Entry');
     }

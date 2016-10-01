@@ -5,9 +5,10 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 
 use App\Http\Requests;
-use App\User;
+use App\Article;
+use App\Category;
 
-class UsersController extends Controller
+class ArticlesController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -16,8 +17,8 @@ class UsersController extends Controller
      */
     public function index()
     {
-        $users=User::orderBy('id','desc')->paginate(6);
-        return view('admin.users.index')->with('users',$users);
+        $articles=Article::orderBy('id','desc')->paginate(6);
+        return view('admin.articles.index')->with('articles',$articles);
     }
 
     /**
@@ -27,7 +28,9 @@ class UsersController extends Controller
      */
     public function create()
     {
-         return view('admin.users.create');
+        $categories=Category::orderBy('name','ASC')->pluck('name', 'id');
+        //dd($categories);      
+       return view('admin.articles.create')->with('categories',$categories);
     }
 
     /**
@@ -38,10 +41,11 @@ class UsersController extends Controller
      */
     public function store(Request $request)
     {
-        $user=new User($request->all());
-        $user->password=bcrypt($user->password);
-        $user->save();
-        return redirect()->route('users.index');
+        $article=new Article($request->all());
+        //dd($article);
+        $article->image='';
+        $article->save();
+        return redirect()->route('articles.index');
     }
 
     /**
@@ -63,8 +67,8 @@ class UsersController extends Controller
      */
     public function edit($id)
     {
-        $user=User::find($id);
-        return view('admin.users.edit')->with('user',$user);
+        $article=Article::find($id);
+        return view('admin.articles.edit')->with('article',$article);
     }
 
     /**
@@ -76,10 +80,10 @@ class UsersController extends Controller
      */
     public function update(Request $request, $id)
     {
-        $user=User::find($id);
-        $user->fill($request->all());
-        $user->save();
-         return redirect()->route('users.index');
+        $article=Article::find($id);
+        $article->fill($request->all());
+        $article->save();
+        return redirect()->route('articles.index');
     }
 
     /**
@@ -90,9 +94,9 @@ class UsersController extends Controller
      */
     public function destroy($id)
     {
-        $user=User::find($id);
-        $user->delete();
+        $article=Article::find($id);
+        $article->delete();
       
-        return redirect()->route("users.index");
+        return redirect()->route("articles.index");
     }
 }

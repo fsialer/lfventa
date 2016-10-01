@@ -8,17 +8,17 @@
         <span class="icon-bar"></span>
         <span class="icon-bar"></span>
       </button>
-      <a class="navbar-brand" href="#">FVentas</a>
+      <a class="navbar-brand" href="#"><img src="{{asset('img/logo.png')}}" width="20" height="20"></a>
     </div>
 
     <!-- Collect the nav links, forms, and other content for toggling -->
     <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
       <ul class="nav navbar-nav">
         <li class=""><a href="{{route('users.index')}}">Usuarios <span class="sr-only">(current)</span></a></li>
-        <li class=""><a href="#">Categorias <span class="sr-only">(current)</span></a></li>
-        <li class=""><a href="#">Articulos <span class="sr-only">(current)</span></a></li>
+        <li class=""><a href="{{route('categories.index')}}">Categorias <span class="sr-only">(current)</span></a></li>
+        <li class=""><a href="{{route('articles.index')}}">Articulos <span class="sr-only">(current)</span></a></li>
         <li class=""><a href="#">Clientes <span class="sr-only">(current)</span></a></li>
-        <li class=""><a href="#">Proveedores <span class="sr-only">(current)</span></a></li>
+        <li class=""><a href="{{route('providers.index')}}">Proveedores <span class="sr-only">(current)</span></a></li>
         <li class=""><a href="#">Entradas <span class="sr-only">(current)</span></a></li>
         <li class=""><a href="#">Ventas <span class="sr-only">(current)</span></a></li>
       </ul>

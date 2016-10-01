@@ -26,3 +26,14 @@ Route::group(['prefix'=>'admin'],function(){
 	Route::get("categories/{id}/destroy",['uses'=>'CategoriesController@destroy',
 		'as'=>'admin.categories.destroy']);
 });
+Route::group(['prefix'=>'admin'],function(){
+	Route::resource('articles','ArticlesController');
+	Route::get("articles/{id}/destroy",['uses'=>'ArticlesController@destroy',
+		'as'=>'admin.articles.destroy']);
+});
+
+Route::group(['prefix'=>'admin'],function(){
+	Route::resource('providers','ProvidersController');
+	Route::get("providers/{id}/destroy",['uses'=>'ProvidersController@destroy',
+		'as'=>'admin.providers.destroy']);
+});
