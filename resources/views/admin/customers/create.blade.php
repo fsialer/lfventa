@@ -1,11 +1,11 @@
 @extends('admin.template.main')
-@section('title','Crear Proveedor')
+@section('title','Crear Cliente')
 @section('content')	
 	<div class="col-md-6 center-block quitar-float">
 		<div class="panel panel-primary ">
-			<div class="panel-heading">Crear Proveedor</div>
+			<div class="panel-heading">Crear Cliente</div>
 			<div class="panel-body">
-				{!!Form::open(['route'=>'providers.store','method'=>'POST'])!!}
+				{!!Form::open(['route'=>'customers.store','method'=>'POST'])!!}
 				<div class="form-group">	
 	    			{!!Form::label('name', 'Nombre', ['class' => ''])!!}			   
 				    {!!Form::text('name','',['class' => 'form-control','id'=>'name','placeholder'=>'Nombre'])!!}				   		   

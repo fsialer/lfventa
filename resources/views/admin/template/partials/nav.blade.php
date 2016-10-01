@@ -17,7 +17,7 @@
         <li class=""><a href="{{route('users.index')}}">Usuarios <span class="sr-only">(current)</span></a></li>
         <li class=""><a href="{{route('categories.index')}}">Categorias <span class="sr-only">(current)</span></a></li>
         <li class=""><a href="{{route('articles.index')}}">Articulos <span class="sr-only">(current)</span></a></li>
-        <li class=""><a href="#">Clientes <span class="sr-only">(current)</span></a></li>
+        <li class=""><a href="{{route('customers.index')}}">Clientes <span class="sr-only">(current)</span></a></li>
         <li class=""><a href="{{route('providers.index')}}">Proveedores <span class="sr-only">(current)</span></a></li>
         <li class=""><a href="#">Entradas <span class="sr-only">(current)</span></a></li>
         <li class=""><a href="#">Ventas <span class="sr-only">(current)</span></a></li>

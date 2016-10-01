@@ -21,6 +21,7 @@ class AddEntriesTable extends Migration
             $table->string('num_voucher',20);
             $table->dateTime('date');
             $table->decimal('tax',4,2);
+            $table->decimal('total',11,2);
             $table->timestamps();
 
             $table->foreign('provider_id')->references('id')->on('providers')->onDelete('cascade');

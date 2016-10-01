@@ -37,3 +37,8 @@ Route::group(['prefix'=>'admin'],function(){
 	Route::get("providers/{id}/destroy",['uses'=>'ProvidersController@destroy',
 		'as'=>'admin.providers.destroy']);
 });
+Route::group(['prefix'=>'admin'],function(){
+	Route::resource('customers','CustomersController');
+	Route::get("customers/{id}/destroy",['uses'=>'CustomersController@destroy',
+		'as'=>'admin.customers.destroy']);
+});

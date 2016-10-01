@@ -6,7 +6,7 @@ use Illuminate\Http\Request;
 
 use App\Http\Requests;
 use App\Person;
-class ProvidersController extends Controller
+class CustomersController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -15,8 +15,8 @@ class ProvidersController extends Controller
      */
     public function index()
     {
-        $providers=Person::orderBy('id','desc')->where('type', 'proveedor')->paginate(6);
-        return view('admin.providers.index')->with('providers',$providers);
+        $customers=Person::orderBy('id','desc')->where('type', 'cliente')->paginate(6);
+        return view('admin.customers.index')->with('customers',$customers);
     }
 
     /**
@@ -26,7 +26,7 @@ class ProvidersController extends Controller
      */
     public function create()
     {
-         return view('admin.providers.create');
+         return view('admin.customers.create');
     }
 
     /**
@@ -37,11 +37,11 @@ class ProvidersController extends Controller
      */
     public function store(Request $request)
     {
-        $provider=new Person($request->all());
+         $provider=new Person($request->all());
         //dd($article);
-        $provider->type='proveedor';
+        $provider->type='cliente';
         $provider->save();
-        return redirect()->route('providers.index');
+        return redirect()->route('customers.index');
     }
 
     /**
@@ -63,8 +63,8 @@ class ProvidersController extends Controller
      */
     public function edit($id)
     {
-        $provider=Person::find($id);
-        return view('admin.providers.edit')->with('provider',$provider);
+        $customer=Person::find($id);
+        return view('admin.customers.edit')->with('customer',$customer);
     }
 
     /**
@@ -76,10 +76,10 @@ class ProvidersController extends Controller
      */
     public function update(Request $request, $id)
     {
-        $provider=Person::find($id);
-        $provider->fill($request->all());
-        $provider->save();
-        return redirect()->route('providers.index');
+        $customer=Person::find($id);
+        $customer->fill($request->all());
+        $customer->save();
+        return redirect()->route('customers.index');
     }
 
     /**
@@ -90,8 +90,8 @@ class ProvidersController extends Controller
      */
     public function destroy($id)
     {
-        $provider=Person::find($id);
-        $provider->delete();      
-        return redirect()->route("providers.index");
+        $customer=Person::find($id);
+        $customer->delete();      
+        return redirect()->route("customers.index");
     }
 }
