@@ -11,7 +11,7 @@ class Sale extends Model
     protected $fillable=['customer_id','user_id','type_voucher','serie_voucher','num_voucher','date','tax','total'];
 
     public function customer(){
-    	return belongsTo('App\Customer');
+    	return belongsTo('App\Person');
 
     }
 

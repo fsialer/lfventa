@@ -25,11 +25,11 @@ class AddSalesTable extends Migration
             $table->decimal('total',11,2);
             $table->timestamps();
 
-            $table->foreign('customer_id')->references('id')->on('customers')->onDelete('cascade');
+            $table->foreign('customer_id')->references('id')->on('people')->onDelete('cascade');
             $table->foreign('user_id')->references('id')->on('users')->onDelete('cascade');
         });
 
-        Schema::create('sale_article', function (Blueprint $table) {
+        Schema::create('article_sale', function (Blueprint $table) {
             $table->increments('id');
             $table->integer('article_id')->unsigned();
             $table->integer('sale_id')->unsigned();

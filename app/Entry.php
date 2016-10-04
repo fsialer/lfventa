@@ -8,14 +8,14 @@ class Entry extends Model
 {
      protected $table="entries";
 
-    protected $fillable=['provider_id','type_voucher','serie_voucher','num_voucher','date','tax'];
+    protected $fillable=['provider_id','type_voucher','serie_voucher','num_voucher','date','tax','total'];
 
     public function provider(){
-    	return $this->belongsTo('App\Provider');
+    	return $this->belongsTo('App\Person');
     }
 
     public function articles(){
-    	return $this->belongsToMany('App\Article');
+    	return $this->belongsToMany('App\Article')->withPivot('quantity', 'price_sale','price_buy');
     }
 
 

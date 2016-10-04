@@ -7,9 +7,10 @@
  			Listado de Articulos
  		</div>
  		<div class="panel-body">
- 			<div class="table table-hover">
+ 			<div class="table-responsive">
  				<table class="table table-hover">
  					<tr>
+ 						<th>Categoria</th>
 						<th>Codigo</th>
 						<th>Nombre</th>
 						<th>Stock</th>
@@ -18,6 +19,7 @@
 					</tr>
 					@foreach($articles as $article)
 					<tr>
+						<td>{{$article->category->name}}</td>
 						<td>{{$article->code}}</td>
 						<td>{{$article->name}}</td>
 						<td>{{$article->stock}}</td>

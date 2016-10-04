@@ -5,10 +5,11 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 
 use App\Http\Requests;
+use App\Entry;
+use App\Person;
 use App\Article;
-use App\Category;
 
-class ArticlesController extends Controller
+class EntriesController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -17,11 +18,11 @@ class ArticlesController extends Controller
      */
     public function index()
     {
-        $articles=Article::orderBy('id','desc')->paginate(6);
-        $articles->each(function($articles){
-            $articles->category;
+        $entries=Entry::orderBy('id','desc')->paginate(6);
+        $entries->each(function($entries){
+            $entries->provider;
         });
-        return view('admin.articles.index')->with('articles',$articles);
+        return view('admin.entries.index')->with('entries',$entries);
     }
 
     /**
@@ -31,9 +32,10 @@ class ArticlesController extends Controller
      */
     public function create()
     {
-        $categories=Category::orderBy('name','ASC')->pluck('name', 'id');
+        $providers=Person::orderBy('name','ASC')->where('type','proveedor')->pluck('name', 'id');
+        $articles=Article::orderBy('name','ASC')->pluck('name', 'id');
         //dd($categories);      
-       return view('admin.articles.create')->with('categories',$categories);
+       return view('admin.entries.create')->with('providers',$providers)->with('articles',$articles);
     }
 
     /**
@@ -44,10 +46,16 @@ class ArticlesController extends Controller
      */
     public function store(Request $request)
     {
-        $article=new Article($request->all());
-        //dd($article);
-        $article->save();
-        return redirect()->route('articles.index');
+       $entry=new Entry($request->all());
+       $entry->date=\Carbon\Carbon::now('America/Lima');
+       $entry->tax=1.8;
+       $entry->save();
+       $data;
+       foreach ($request->articles as $key => $value) {
+          $data[$value]=['quantity'=>$request->quantity[$key],'price_sale'=>$request->price_sale[$key],'price_buy'=>$request->price_buy[$key]];
+       }
+       $entry->articles()->sync($data);
+        return redirect()->route('entries.index');
     }
 
     /**
@@ -58,7 +66,10 @@ class ArticlesController extends Controller
      */
     public function show($id)
     {
-        //
+         $entry=Entry::find($id);
+         $entry->provider;
+         $entry->articles;
+         return view('admin.entries.show')->with('entry',$entry);
     }
 
     /**
@@ -69,8 +80,7 @@ class ArticlesController extends Controller
      */
     public function edit($id)
     {
-        $article=Article::find($id);
-        return view('admin.articles.edit')->with('article',$article);
+        //
     }
 
     /**
@@ -82,10 +92,7 @@ class ArticlesController extends Controller
      */
     public function update(Request $request, $id)
     {
-        $article=Article::find($id);
-        $article->fill($request->all());
-        $article->save();
-        return redirect()->route('articles.index');
+        //
     }
 
     /**
@@ -96,9 +103,10 @@ class ArticlesController extends Controller
      */
     public function destroy($id)
     {
-        $article=Article::find($id);
-        $article->delete();
-      
-        return redirect()->route("articles.index");
+        $entry=Entry::find($id);
+        $entry->state='cancelado';
+        
+        $entry->save();
+        return redirect()->route('entries.index');
     }
 }

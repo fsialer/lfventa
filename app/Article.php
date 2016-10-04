@@ -15,11 +15,11 @@ class Article extends Model
     }
 
     public function entries(){
-    	return $this->belongsToMany('App\Entry');
+    	return $this->belongsToMany('App\Entry')->withTimeStamps();
     }
 
     public function sales(){
-    	return $this->belongsToMany('App\Sale');
+    	return $this->belongsToMany('App\Sale')->withTimeStamps();
     }
     
 }

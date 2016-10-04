@@ -19,15 +19,15 @@ class AddEntriesTable extends Migration
             $table->enum('type_voucher',['factura','boleta'])->default('factura');
             $table->string('serie_voucher',20);
             $table->string('num_voucher',20);
-            $table->dateTime('date');
+            $table->datetime('date');
             $table->decimal('tax',4,2);
             $table->decimal('total',11,2);
             $table->timestamps();
-
-            $table->foreign('provider_id')->references('id')->on('providers')->onDelete('cascade');
+             $table->enum('state',['atendido','cancelado'])->default('atendido');
+            $table->foreign('provider_id')->references('id')->on('people')->onDelete('cascade');
         });
 
-        Schema::create('entry_article', function (Blueprint $table) {
+        Schema::create('article_entry', function (Blueprint $table) {
             $table->increments('id');
             $table->integer('entry_id')->unsigned();
             $table->integer('article_id')->unsigned();

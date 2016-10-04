@@ -7,7 +7,7 @@
  			Listado de Categorias
  		</div>
  		<div class="panel-body">
- 			<div class="table table-hover">
+ 			<div class="table-responsive">
  				<table class="table table-hover">
  					<tr>
 						<th>Nombre</th>

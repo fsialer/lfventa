@@ -7,7 +7,7 @@
  			Listado de Proveedores
  		</div>
  		<div class="panel-body">
- 			<div class="table table-hover">
+ 			<div class="table-responsive">
  				<table class="table table-hover">
  					<tr>
 						<th>Nombre</th>
@@ -15,7 +15,7 @@
 						<th>Numero del documento</th>	
 						<th>Telefono</th>	
 						<th>Email</th>
-						<th>Estado</th					
+						<th>Estado</th>				
 						<th>Acciones</th>
 					</tr>
 					@foreach($providers as $provider)

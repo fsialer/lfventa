@@ -7,7 +7,7 @@
 	<link href="https://fonts.googleapis.com/icon?family=Material+Icons"
       rel="stylesheet">
 	<link rel="stylesheet" href="{{asset('plugins/bootstrap/css/bootstrap.min.css')}}" type="text/css">
-	<link rel="stylesheet" type="text/css" href="{{asset('css/estilo.css')}}">
+	<link rel="stylesheet" type="text/css" href="{{asset('css/main.css')}}">
 </head>
 <body>
 @include('admin.template.partials.nav')
@@ -18,6 +18,6 @@
 @include('admin.template.partials.footer')
 <script   src="https://code.jquery.com/jquery-2.2.4.min.js"   integrity="sha256-BbhdlvQf/xTY9gja0Dq3HiwQF8LaCRTXxZKRutelT44="   crossorigin="anonymous"></script>
 <script type="text/javascript" src='{{asset('plugins/bootstrap/js/bootstrap.min.js')}}'></script>
-
+@yield('js')
 </body>
 </html>
