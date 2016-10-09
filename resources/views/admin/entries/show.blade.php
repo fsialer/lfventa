@@ -8,19 +8,23 @@
 				
 				<div class="form-group">
 	  				{!!Form::label('provider_id', 'Proveedor', ['class' => ''])!!}
-	  				 {!!Form::text('serie_voucher',$entry->provider->name,['class' => 'form-control','id'=>'serie_voucher','placeholder'=>'Serie del documento'])!!}	  				  
+	  				<p>{{$entry->provider->name}}</p>
+	  				 	  				  
 	  			</div>
 				<div class="form-group col-md-4">	
 					 {!!Form::label('serie_voucher', 'Tipo de Comprobante', ['class' => ''])!!}
-	    			 {!!Form::text('serie_voucher',$entry->type_voucher,['class' => 'form-control','id'=>'serie_voucher','placeholder'=>'Serie del documento'])!!}				   		   
+					 <p>{{$entry->type_voucher}}</p>
+	    						   		   
 	  			</div>
 	  			<div class="form-group col-md-4">	
-	    			{!!Form::label('serie_voucher', 'Serie del comprobante', ['class' => ''])!!}			   
-				    {!!Form::text('serie_voucher',$entry->serie_voucher,['class' => 'form-control','id'=>'serie_voucher','placeholder'=>'Serie del documento'])!!}				   		   
+	    			{!!Form::label('serie_voucher', 'Serie del comprobante', ['class' => ''])!!}		
+	    			<p>{{$entry->serie_voucher}}</p>	   
+				   			   		   
 	  			</div>
 	  			<div class="form-group col-md-4">	
-	    			{!!Form::label('num_voucher', 'Número del comprobante', ['class' => ''])!!}			   
-				    {!!Form::text('num_voucher',$entry->num_voucher,['class' => 'form-control','id'=>'num_voucher','placeholder'=>'Numero de Comprobante'])!!}				   		   
+	    			{!!Form::label('num_voucher', 'Número del comprobante', ['class' => ''])!!}		
+	    			<p>{{$entry->num_voucher}}</p>	 	   
+				   				   		   
 	  			</div>
 	  			<div class="row"></div>
 	  			<div class="panel panel-primary">
@@ -66,7 +70,4 @@
 			</div>
 		</div>		
 	</div>
-@endsection
-@section('js')	
-<script type="text/javascript" src="{{asset('js/main.js')}}"></script>
 @endsection

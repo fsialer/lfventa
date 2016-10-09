@@ -6,9 +6,13 @@
 			<div class="panel-heading">Editar Articulo-{{$article->name}}</div>
 			<div class="panel-body">
 				{!!Form::open(['route'=>['articles.update',$article],'method'=>'PUT'])!!}
+				<div class="form-group">
+	  				{!!Form::label('category_id', 'Categoria', ['class' => ''])!!}
+	  				{!!Form::select('category_id',$categories,$article->category_id,['class'=>'form-control category-select','id'=>'category_id']);!!}	   
+	  			</div>
 				<div class="form-group">	
 	    			{!!Form::label('code', 'Codigo', ['class' => ''])!!}			   
-				    {!!Form::text('code',$article->code,['class' => 'form-control','id'=>'code','placeholder'=>'Codigo'])!!}				   		   
+				    {!!Form::text('code',$article->code,['class' => 'form-control category-select','id'=>'code','placeholder'=>'Codigo'])!!}		   		   
 	  			</div>
 	    		<div class="form-group">	
 	    			{!!Form::label('name', 'Nombre', ['class' => ''])!!}			   
@@ -33,4 +37,7 @@
 			</div>
 		</div>		
 	</div>
+@endsection
+@section('js')	
+<script type="text/javascript" src="{{asset('js/main.js')}}"></script>
 @endsection

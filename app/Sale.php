@@ -11,8 +11,7 @@ class Sale extends Model
     protected $fillable=['customer_id','user_id','type_voucher','serie_voucher','num_voucher','date','tax','total'];
 
     public function customer(){
-    	return belongsTo('App\Person');
-
+    	return $this->belongsTo('App\Person');
     }
 
     public function user(){
@@ -20,6 +19,6 @@ class Sale extends Model
     }
 
     public function articles(){
-    	return $this->belongsToMany('App\Article');
+    	return $this->belongsToMany('App\Article')->withPivot('quantity', 'discount','price_sale');
     }
 }

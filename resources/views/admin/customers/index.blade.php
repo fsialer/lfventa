@@ -11,8 +11,7 @@
  				<table class="table table-hover">
  					<tr>
 						<th>Nombre</th>
-						<th>Tipo de documento</th>
-						<th>Numero del documento</th>	
+						<th>Documento</th>	
 						<th>Telefono</th>	
 						<th>Email</th>
 						<th>Estado</th>				
@@ -21,8 +20,7 @@
 					@foreach($customers as $customer)
 					<tr>
 						<td>{{$customer->name}}</td>
-						<td>{{$customer->type_document}}</td>
-						<td>{{$customer->num_document}}</td>
+						<td>{{$customer->type_document}}:{{$customer->num_document}}</td>
 						<td>{{$customer->phone}}</td>
 						<td>{{$customer->email}}</td>
 						<td>{{$customer->state}}</td>

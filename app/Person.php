@@ -10,7 +10,12 @@ class Person extends Model
 
     protected $fillable=['name','type_document','num_document','phone','email','state','type'];
 
+    public function entries(){
+    	return $this->hasMany('App\Entry');
+    }
     public function sales(){
     	return $this->hasMany('App\Sale');
     }
+
+
 }

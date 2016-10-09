@@ -55,7 +55,8 @@ class EntriesController extends Controller
           $data[$value]=['quantity'=>$request->quantity[$key],'price_sale'=>$request->price_sale[$key],'price_buy'=>$request->price_buy[$key]];
        }
        $entry->articles()->sync($data);
-        return redirect()->route('entries.index');
+
+       return redirect()->route('entries.index');
     }
 
     /**
@@ -104,8 +105,7 @@ class EntriesController extends Controller
     public function destroy($id)
     {
         $entry=Entry::find($id);
-        $entry->state='cancelado';
-        
+        $entry->state='cancelado';        
         $entry->save();
         return redirect()->route('entries.index');
     }

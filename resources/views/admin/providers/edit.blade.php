@@ -12,7 +12,7 @@
 	  			</div>
 	  			<div class="form-group">
 	  				{!!Form::label('type_document', 'Tipo de Documento', ['class' => ''])!!}
-	  				{!!Form::select('type_document', ['dni' => 'DNI', 'ruc' => 'RUC','pas'=>'PAS'],$provider->type_document,['class'=>'form-control','id'=>'type_document']);!!}	   
+	  				{!!Form::select('type_document', ['0'=>'','dni' => 'DNI', 'ruc' => 'RUC','pas'=>'PAS'],$provider->type_document,['class'=>'form-control type_document-select','id'=>'type_document']);!!}	   
 	  			</div>
 	    		<div class="form-group">	
 	    			{!!Form::label('num_document', 'Número de documento', ['class' => ''])!!}			   
@@ -38,4 +38,7 @@
 			</div>
 		</div>		
 	</div>
+@endsection
+@section('js')	
+<script type="text/javascript" src="{{asset('js/main.js')}}"></script>
 @endsection

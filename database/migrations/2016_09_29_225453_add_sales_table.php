@@ -35,7 +35,6 @@ class AddSalesTable extends Migration
             $table->integer('sale_id')->unsigned();
             $table->integer('quantity')->unsigned();
             $table->decimal('discount',11,2);
-            $table->decimal('total',11,2);
             $table->timestamps();
 
             $table->foreign('article_id')->references('id')->on('articles')->onDelete('cascade');

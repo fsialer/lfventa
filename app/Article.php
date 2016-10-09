@@ -15,11 +15,11 @@ class Article extends Model
     }
 
     public function entries(){
-    	return $this->belongsToMany('App\Entry')->withTimeStamps();
+    	return $this->belongsToMany('App\Entry')->withPivot('quantity', 'price_sale','price_buy');
     }
 
     public function sales(){
-    	return $this->belongsToMany('App\Sale')->withTimeStamps();
+    	return $this->belongsToMany('App\Sale')->withPivot('quantity', 'discount');
     }
     
 }

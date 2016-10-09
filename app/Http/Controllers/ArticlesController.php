@@ -70,7 +70,8 @@ class ArticlesController extends Controller
     public function edit($id)
     {
         $article=Article::find($id);
-        return view('admin.articles.edit')->with('article',$article);
+        $categories=Category::orderBy('name','ASC')->pluck('name', 'id');
+        return view('admin.articles.edit')->with('article',$article)->with('categories',$categories);
     }
 
     /**

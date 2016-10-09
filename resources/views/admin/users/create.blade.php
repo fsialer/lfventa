@@ -20,7 +20,7 @@
 	  			</div>
 	  			<div class="form-group">
 	  				{!!Form::label('type', 'Tipo de Acceso', ['class' => 'mdl-textfield__label'])!!}
-	  				{!!Form::select('type', ['admin' => 'Admin', 'empleado' => 'Empleado'],'null',['class'=>'form-control','id'=>'type']);!!}	   
+	  				{!!Form::select('type', ['0'=>'','admin' => 'Admin', 'empleado' => 'Empleado'],'null',['class'=>'form-control type_us-select','id'=>'type']);!!}	   
 	  			</div>
 	  			<div class="form-group texto-derecha">
 	  				{!! Form::submit('Registrar',['class'=>'btn btn-success']) !!}
@@ -30,4 +30,7 @@
 			</div>
 		</div>		
 	</div>
+@endsection
+@section('js')	
+<script type="text/javascript" src="{{asset('js/main.js')}}"></script>
 @endsection

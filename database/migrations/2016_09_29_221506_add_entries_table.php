@@ -34,7 +34,7 @@ class AddEntriesTable extends Migration
             $table->integer('quantity')->unsigned();
             $table->decimal('price_sale',11,2);
             $table->decimal('price_buy',11,2);
-            
+            $table->timestamps();
             $table->foreign('entry_id')->references('id')->on('entries')->onDelete('cascade');
             $table->foreign('article_id')->references('id')->on('articles')->onDelete('cascade');
         });

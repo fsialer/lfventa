@@ -47,3 +47,13 @@ Route::group(['prefix'=>'admin'],function(){
 	Route::get("entries/{id}/destroy",['uses'=>'EntriesController@destroy',
 		'as'=>'admin.entries.destroy']);
 });
+Route::group(['prefix'=>'admin'],function(){
+	Route::resource('sales','SalesController');
+	Route::get("sales/{id}/destroy",['uses'=>'SalesController@destroy',
+		'as'=>'admin.sales.destroy']);	
+	//ajax
+	Route::get("sales/{id}/loadop",['uses'=>'SalesController@loadop',
+		'as'=>'admin.sales.loadop']);
+});
+
+

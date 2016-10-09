@@ -1,14 +1,14 @@
 @extends('admin.template.main')
-@section('title','Crear Entradas')
+@section('title','Crear Venta')
 @section('content')	
 	<div class="col-md-12 center-block quitar-float">
 		<div class="panel panel-primary">
-			<div class="panel-heading">Crear Entradas</div>
+			<div class="panel-heading">Crear Venta</div>
 			<div class="panel-body">
-				{!!Form::open(['route'=>'entries.store','method'=>'POST'])!!}
+				{!!Form::open(['route'=>'sales.store','method'=>'POST'])!!}
 				<div class="form-group">
-	  				{!!Form::label('provider_id', 'Proveedor', ['class' => ''])!!}
-	  				{!!Form::select('provider_id',$providers,null,['class'=>'form-control provider_id-select','id'=>'provider_id']);!!}	   
+	  				{!!Form::label('customer_id', 'Cliente', ['class' => ''])!!}
+	  				{!!Form::select('customer_id',$customers,null,['class'=>'form-control customer_id-select','id'=>'customer_id']);!!}	   
 	  			</div>
 				<div class="form-group col-md-4">	
 	    			{!!Form::label('type_voucher', 'Tipo de Comprobante', ['class' => ''])!!}			   
@@ -27,22 +27,26 @@
 	  				<div class="panel-body">
 	  					<div class="form-group col-md-4">
 	  						{!!Form::label('article_id', 'Articulo', ['class' => ''])!!}
-	  						{!!Form::select('article_id',$articles,null,['class'=>'form-control article_id-select','id'=>'article_id']);!!}	   
+	  						{!!Form::select('article_id',$articles,null,['class'=>'form-control article_id-select','id'=>'article_id2']);!!}	   
 	  					</div>
 	  					<div class="form-group col-md-2">
 	  						{!!Form::label('quantity', 'Cantidad', ['class' => ''])!!}
 	  						{!!Form::number('quantity','',['class' => 'form-control','id'=>'quantity','placeholder'=>'Cantidad'])!!}	   
 	  					</div>
 	  					<div class="form-group col-md-2">
+	  						{!!Form::label('stock', 'Stock', ['class' => ''])!!}
+	  						{!!Form::number('stock','',['class' => 'form-control','id'=>'stock','placeholder'=>'Stock','readOnly'])!!}	   
+	  					</div>
+	  					<div class="form-group col-md-2">
 	  						{!!Form::label('price_sale', 'Precio de Venta', ['class' => ''])!!}
-	  						{!!Form::number('price_sale','',['class' => 'form-control','id'=>'price_sale','placeholder'=>'Precio de Venta'])!!}	   
+	  						{!!Form::number('price_sale','',['class' => 'form-control','id'=>'price_sale','placeholder'=>'Precio de Venta','readOnly'])!!}	   
 	  					</div>
 	  					<div class="form-group col-md-2">
-	  						{!!Form::label('price_buy', 'Precio de Compra', ['class' => ''])!!}
-	  						{!!Form::number('price_buy','',['class' => 'form-control','id'=>'price_buy','placeholder'=>'Precio de Compra'])!!}	   
+	  						{!!Form::label('discount', 'descuento', ['class' => ''])!!}
+	  						{!!Form::number('discount','',['class' => 'form-control','id'=>'discount','placeholder'=>'Descuento'])!!}	   
 	  					</div>
 	  					<div class="form-group col-md-2">
-	  						{!! Form::button('Agregar',['class'=>'btn btn-success','id'=>'btnAgregar']) !!}
+	  						{!! Form::button('Agregar',['class'=>'btn btn-success','id'=>'btnAgregar2']) !!}
 	  					</div>
 	  					<div class="row"></div>
 	  					<div class="table-responsive">
@@ -51,10 +55,9 @@
 	  								<th>Acciones</th>
 									<th>Articulo</th>
 									<th>Cantidad</th>
-									<th>Precio Venta</th>	
-									<th>Precio Compra</th>
-									<th>SubTotal</th>				
-									
+									<th>Precio Venta</th>
+									<th>Descuento</th>
+									<th>SubTotal</th>						
 								</thead>
 								<tfoot>
 									<th>Total</th>

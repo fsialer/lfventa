@@ -20,7 +20,7 @@
         <li class=""><a href="{{route('customers.index')}}">Clientes <span class="sr-only">(current)</span></a></li>
         <li class=""><a href="{{route('providers.index')}}">Proveedores <span class="sr-only">(current)</span></a></li>
         <li class=""><a href="{{route('entries.index')}}">Entradas <span class="sr-only">(current)</span></a></li>
-        <li class=""><a href="#">Ventas <span class="sr-only">(current)</span></a></li>
+        <li class=""><a href="{{route('sales.index')}}">Ventas <span class="sr-only">(current)</span></a></li>
       </ul>
       <ul class="nav navbar-nav navbar-right">
         <li><a href="#">Link</a></li>
