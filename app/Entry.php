@@ -17,6 +17,9 @@ class Entry extends Model
     public function articles(){
     	return $this->belongsToMany('App\Article')->withPivot('quantity', 'price_sale','price_buy');
     }
+    public function scopeSearch($query,$name){
+        return $query->where('num_voucher','LIKE',"%$name%");
+    }
 
 
 }

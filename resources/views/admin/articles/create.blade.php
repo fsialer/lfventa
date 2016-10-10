@@ -2,7 +2,7 @@
 @section('title','Crear Articulo')
 @section('content')	
 	<div class="col-md-6 center-block quitar-float">
-		<div class="panel panel-primary ">
+		<div class="panel panel-success ">
 			<div class="panel-heading">Crear Articulo</div>
 			<div class="panel-body">
 				{!!Form::open(['route'=>'articles.store','method'=>'POST'])!!}
@@ -28,6 +28,7 @@
 	  			</div>
 	  			<div class="form-group texto-derecha">
 	  				{!! Form::submit('Registrar',['class'=>'btn btn-success']) !!}
+	  				<a href="{{route('articles.index')}}" class="btn btn-default">Cancelar</a>
 	  			</div>
 	  			
 	    		{!!Form::close()!!}

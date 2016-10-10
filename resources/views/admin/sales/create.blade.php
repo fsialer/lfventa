@@ -2,7 +2,7 @@
 @section('title','Crear Venta')
 @section('content')	
 	<div class="col-md-12 center-block quitar-float">
-		<div class="panel panel-primary">
+		<div class="panel panel-success">
 			<div class="panel-heading">Crear Venta</div>
 			<div class="panel-body">
 				{!!Form::open(['route'=>'sales.store','method'=>'POST'])!!}
@@ -27,23 +27,23 @@
 	  				<div class="panel-body">
 	  					<div class="form-group col-md-4">
 	  						{!!Form::label('article_id', 'Articulo', ['class' => ''])!!}
-	  						{!!Form::select('article_id',$articles,null,['class'=>'form-control article_id-select','id'=>'article_id2']);!!}	   
+	  						{!!Form::select('aarticle_id',$articles,null,['class'=>'form-control article_id-select','id'=>'article_id2']);!!}	   
 	  					</div>
 	  					<div class="form-group col-md-2">
 	  						{!!Form::label('quantity', 'Cantidad', ['class' => ''])!!}
-	  						{!!Form::number('quantity','',['class' => 'form-control','id'=>'quantity','placeholder'=>'Cantidad'])!!}	   
+	  						{!!Form::number('qquantity','',['class' => 'form-control','id'=>'quantity','placeholder'=>'Cantidad'])!!}	   
 	  					</div>
 	  					<div class="form-group col-md-2">
 	  						{!!Form::label('stock', 'Stock', ['class' => ''])!!}
-	  						{!!Form::number('stock','',['class' => 'form-control','id'=>'stock','placeholder'=>'Stock','readOnly'])!!}	   
+	  						{!!Form::number('sstock','',['class' => 'form-control','id'=>'stock','placeholder'=>'Stock','readOnly'])!!}	   
 	  					</div>
 	  					<div class="form-group col-md-2">
 	  						{!!Form::label('price_sale', 'Precio de Venta', ['class' => ''])!!}
-	  						{!!Form::number('price_sale','',['class' => 'form-control','id'=>'price_sale','placeholder'=>'Precio de Venta','readOnly'])!!}	   
+	  						{!!Form::number('pprice_sale','',['class' => 'form-control','id'=>'price_sale','placeholder'=>'Precio de Venta','readOnly'])!!}	   
 	  					</div>
 	  					<div class="form-group col-md-2">
 	  						{!!Form::label('discount', 'descuento', ['class' => ''])!!}
-	  						{!!Form::number('discount','',['class' => 'form-control','id'=>'discount','placeholder'=>'Descuento'])!!}	   
+	  						{!!Form::number('ddiscount','',['class' => 'form-control','id'=>'discount','placeholder'=>'Descuento'])!!}	   
 	  					</div>
 	  					<div class="form-group col-md-2">
 	  						{!! Form::button('Agregar',['class'=>'btn btn-success','id'=>'btnAgregar2']) !!}
@@ -73,6 +73,7 @@
 	  			</div>
 	  			<div class="form-group texto-derecha">
 	  				{!! Form::submit('Registrar',['class'=>'btn btn-success']) !!}
+	  				<a href="{{route('sales.index')}}" class="btn btn-default">Regresar</a>
 	  			</div>
 	  			
 	    		{!!Form::close()!!}

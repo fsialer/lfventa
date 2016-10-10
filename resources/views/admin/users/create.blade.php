@@ -2,7 +2,7 @@
 @section('title','Crear Usuario')
 @section('content')	
 	<div class="col-md-6 center-block quitar-float">
-		<div class="panel panel-primary ">
+		<div class="panel panel-success ">
 			<div class="panel-heading">Crear Usuario</div>
 			<div class="panel-body">
 				{!!Form::open(['route'=>'users.store','method'=>'POST'])!!}
@@ -24,6 +24,7 @@
 	  			</div>
 	  			<div class="form-group texto-derecha">
 	  				{!! Form::submit('Registrar',['class'=>'btn btn-success']) !!}
+	  				<a href="{{route('users.index')}}" class="btn btn-default">Cancelar</a>
 	  			</div>
 	  			
 	    		{!!Form::close()!!}

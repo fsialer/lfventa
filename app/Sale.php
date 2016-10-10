@@ -21,4 +21,7 @@ class Sale extends Model
     public function articles(){
     	return $this->belongsToMany('App\Article')->withPivot('quantity', 'discount','price_sale');
     }
+    public function scopeSearch($query,$name){
+        return $query->where('num_voucher','LIKE',"%$name%");
+    }
 }

@@ -2,6 +2,14 @@
 @section('title','Listado de Entradas')
 @section('content')
  <div class="col-md-10 center-block quitar-float">
+ 	<a href="{{route('entries.create')}}" class="btn btn-info">Agregar</a>
+	 {!! Form::open(['route'=>'entries.index','method'=>'GET','class'=>'navbar-form pull-right']) !!}
+	<div class="input-group">
+		{!! Form::text('num_voucher',null,['class'=>'form-control','placeholder'=>'Buscar comprobante..']) !!}
+		<span class="input-group-addon"><i class="glyphicon glyphicon-search"></i></span>
+	</div>
+	{!! Form::close() !!}
+	 <hr>
  	<div class="panel panel-info">
  		<div class="panel-heading">
  			Listado de Entradas de Compras

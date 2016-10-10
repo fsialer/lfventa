@@ -2,6 +2,14 @@
 @section('title','Listado de Categorias')
 @section('content')
  <div class="col-md-8 center-block quitar-float">
+ 	<a href="{{route('categories.create')}}" class="btn btn-info">Agregar</a>
+ 	{!! Form::open(['route'=>'categories.index','method'=>'GET','class'=>'navbar-form pull-right']) !!}
+	<div class="input-group">
+		{!! Form::text('name',null,['class'=>'form-control','placeholder'=>'Buscar Nombre..']) !!}
+		<span class="input-group-addon"><i class="glyphicon glyphicon-search"></i></span>
+	</div>
+	{!! Form::close() !!}
+ 	<hr>
  	<div class="panel panel-info">
  		<div class="panel-heading">
  			Listado de Categorias

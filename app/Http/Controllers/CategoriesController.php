@@ -13,9 +13,9 @@ class CategoriesController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function index()
+    public function index(Request $request)
     {
-        $categories=Category::orderBy('id','desc')->paginate(6);
+        $categories=Category::search($request->name)->orderBy('id','desc')->paginate(6);
         return view('admin.categories.index')->with('categories',$categories);
     }
 

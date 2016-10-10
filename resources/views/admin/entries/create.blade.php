@@ -2,7 +2,7 @@
 @section('title','Crear Entradas')
 @section('content')	
 	<div class="col-md-12 center-block quitar-float">
-		<div class="panel panel-primary">
+		<div class="panel panel-success">
 			<div class="panel-heading">Crear Entradas</div>
 			<div class="panel-body">
 				{!!Form::open(['route'=>'entries.store','method'=>'POST'])!!}
@@ -70,6 +70,7 @@
 	  			</div>
 	  			<div class="form-group texto-derecha">
 	  				{!! Form::submit('Registrar',['class'=>'btn btn-success']) !!}
+	  				<a href="{{route('entries.index')}}" class="btn btn-default">Cancelar</a>
 	  			</div>
 	  			
 	    		{!!Form::close()!!}

@@ -17,9 +17,9 @@ class SalesController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function index()
+    public function index(Request $request)
     {
-        $sales=Sale::orderBy('id','desc')->paginate(6);
+        $sales=Sale::search($request->num_voucher)->orderBy('id','desc')->paginate(6);
         $sales->each(function($sales){
             $sales->customer;
         });

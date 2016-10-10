@@ -13,9 +13,9 @@ class CustomersController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function index()
+    public function index(Request $request)
     {
-        $customers=Person::orderBy('id','desc')->where('type', 'cliente')->paginate(6);
+        $customers=Person::search($request->name)->orderBy('id','desc')->where('type', 'cliente')->paginate(6);
         return view('admin.customers.index')->with('customers',$customers);
     }
 

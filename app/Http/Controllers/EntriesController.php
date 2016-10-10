@@ -16,9 +16,9 @@ class EntriesController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function index()
+    public function index(Request $request)
     {
-        $entries=Entry::orderBy('id','desc')->paginate(6);
+        $entries=Entry::search($request->num_voucher)->orderBy('id','desc')->paginate(6);
         $entries->each(function($entries){
             $entries->provider;
         });

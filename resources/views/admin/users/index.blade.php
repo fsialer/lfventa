@@ -2,11 +2,24 @@
 @section('title','Listado de Usuarios')
 @section('content')
  <div class="col-md-8 center-block quitar-float">
+ 	
+ 	<a href="{{route('users.create')}}" class="btn btn-info">Agregar</a>
+<!-- Buscador de tags -->
+	{!! Form::open(['route'=>'users.index','method'=>'GET','class'=>'navbar-form pull-right']) !!}
+	<div class="input-group">
+		{!! Form::text('name',null,['class'=>'form-control','placeholder'=>'Buscar Nombre..']) !!}
+		<span class="input-group-addon"><i class="glyphicon glyphicon-search"></i></span>
+	</div>
+	{!! Form::close() !!}
+	<hr>
+<!-- Fin del Buscador de tags -->
  	<div class="panel panel-info">
  		<div class="panel-heading">
  			Listado de Usuarios
+
  		</div>
  		<div class="panel-body">
+ 			
  			<div class="table-responsive">
  				<table class="table table-hover">
  					<tr>

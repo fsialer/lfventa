@@ -2,7 +2,7 @@
 @section('title','Detalle de la Venta')
 @section('content')	
 	<div class="col-md-12 center-block quitar-float">
-		<div class="panel panel-primary">
+		<div class="panel panel-info">
 			<div class="panel-heading">Detalle de la venta Venta</div>
 			<div class="panel-body">				
 				<div class="form-group">
@@ -57,7 +57,9 @@
 	  					</div>
 	  				</div>
 	  			</div>
-	  			
+	  			<div class="form-group texto-derecha">
+	  				<a href="{{route('sales.index')}}" class="btn btn-default">Regresar</a>
+	  			</div>  			
 	  			
 	    		
 			</div>

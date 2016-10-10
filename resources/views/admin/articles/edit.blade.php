@@ -32,6 +32,7 @@
 	  			</div>
 	  			<div class="form-group texto-derecha">
 	  				{!! Form::submit('Editar',['class'=>'btn btn-warning']) !!}
+	  				<a href="{{route('articles.index')}}" class="btn btn-default">Cancelar</a>
 	  			</div>	  			
 	    		{!!Form::close()!!}
 			</div>

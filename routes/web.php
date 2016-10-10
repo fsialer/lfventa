@@ -19,41 +19,36 @@ Route::group(['prefix'=>'admin'],function(){
 	Route::resource('users','UsersController');
 	Route::get("users/{id}/destroy",['uses'=>'UsersController@destroy',
 		'as'=>'admin.users.destroy']);
-});
-
-Route::group(['prefix'=>'admin'],function(){
+	//==================
 	Route::resource('categories','CategoriesController');
 	Route::get("categories/{id}/destroy",['uses'=>'CategoriesController@destroy',
 		'as'=>'admin.categories.destroy']);
-});
-Route::group(['prefix'=>'admin'],function(){
+	//=================
 	Route::resource('articles','ArticlesController');
 	Route::get("articles/{id}/destroy",['uses'=>'ArticlesController@destroy',
 		'as'=>'admin.articles.destroy']);
-});
-
-Route::group(['prefix'=>'admin'],function(){
+	//========================
 	Route::resource('providers','ProvidersController');
 	Route::get("providers/{id}/destroy",['uses'=>'ProvidersController@destroy',
 		'as'=>'admin.providers.destroy']);
-});
-Route::group(['prefix'=>'admin'],function(){
+	//=====================
 	Route::resource('customers','CustomersController');
 	Route::get("customers/{id}/destroy",['uses'=>'CustomersController@destroy',
 		'as'=>'admin.customers.destroy']);
-});
-Route::group(['prefix'=>'admin'],function(){
+	//==========================
 	Route::resource('entries','EntriesController');
 	Route::get("entries/{id}/destroy",['uses'=>'EntriesController@destroy',
 		'as'=>'admin.entries.destroy']);
-});
-Route::group(['prefix'=>'admin'],function(){
+	//===========================
 	Route::resource('sales','SalesController');
 	Route::get("sales/{id}/destroy",['uses'=>'SalesController@destroy',
 		'as'=>'admin.sales.destroy']);	
 	//ajax
 	Route::get("sales/{id}/loadop",['uses'=>'SalesController@loadop',
 		'as'=>'admin.sales.loadop']);
+
 });
+
+
 
 

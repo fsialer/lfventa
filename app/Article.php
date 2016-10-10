@@ -22,4 +22,7 @@ class Article extends Model
     	return $this->belongsToMany('App\Sale')->withPivot('quantity', 'discount');
     }
     
+    public function scopeSearch($query,$name){
+        return $query->where('name','LIKE',"%$name%");
+    }
 }

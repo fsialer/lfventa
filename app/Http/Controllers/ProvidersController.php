@@ -13,9 +13,9 @@ class ProvidersController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function index()
+    public function index(Request $request)
     {
-        $providers=Person::orderBy('id','desc')->where('type', 'proveedor')->paginate(6);
+        $providers=Person::search($request->name)->orderBy('id','desc')->where('type', 'proveedor')->paginate(6);
         return view('admin.providers.index')->with('providers',$providers);
     }
 

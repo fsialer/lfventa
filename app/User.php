@@ -30,4 +30,7 @@ class User extends Authenticatable
     public function sales(){
         return $this->hasMany('App\Sale');
     }
+    public function scopeSearch($query,$name){
+        return $query->where('name','LIKE',"%$name%");
+    }
 }

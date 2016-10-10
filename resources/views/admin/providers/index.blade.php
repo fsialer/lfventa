@@ -2,6 +2,14 @@
 @section('title','Listado de Proveedores')
 @section('content')
  <div class="col-md-10 center-block quitar-float">
+ 	<a href="{{route('providers.create')}}" class="btn btn-info">Agregar</a>
+	 {!! Form::open(['route'=>'providers.index','method'=>'GET','class'=>'navbar-form pull-right']) !!}
+	<div class="input-group">
+		{!! Form::text('name',null,['class'=>'form-control','placeholder'=>'Buscar Nombre..']) !!}
+		<span class="input-group-addon"><i class="glyphicon glyphicon-search"></i></span>
+	</div>
+	{!! Form::close() !!}
+	 <hr>
  	<div class="panel panel-info">
  		<div class="panel-heading">
  			Listado de Proveedores

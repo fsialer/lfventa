@@ -75,6 +75,7 @@ $(document).ready(function(){
 			$("#detail").append(fila);
 			$('#total').html('S/. '+total+ctotal);
 			cont++;
+
 		}else{
 			console.log('Error revisa');
 		}
@@ -98,19 +99,26 @@ $(document).ready(function(){
 			var price_sale=$('#price_sale').val();
 			var discount=$('#discount').val();
 			if (article_id>0 && quantity>0 && stock>0 && price_sale>0 && discount>0) {
-				var btnEliminar="<td><button type='button' id='btnEliminar' class='btn btn-danger' onClick='detail_v.eliminar("+cont+")'>X</button></td>";
-				var carticle="<td>"+article+"<input value="+article_id+" name='articles[]' type='hidden'/></td>";
-				var cquantity="<td><input value= "+quantity+" name='quantity[]' type='number' class='form-control'/></td>";
-				var cprice_sale="<td><input value= "+price_sale+" name='price_sale[]' type='number' class='form-control'/></td>";
-				var cdiscount="<td><input value= "+discount+" name='discount[]' type='number' class='form-control'/></td>";
-				subtotal[cont]=(quantity*price_sale)-discount;
-				total=total+subtotal[cont];
-				var ctotal="<input value="+total+" name='total' type='hidden'/>";
-				var csubtotal="<td> S/. "+subtotal[cont]+"</td>";						
-				var fila="<tr id='fila"+cont+"'>"+btnEliminar+carticle+cquantity+cprice_sale+cdiscount+csubtotal+"</tr>";
-				$("#detail").append(fila);
-				$('#total').html('S/. '+total+ctotal);
-				cont++;
+				if (stock>=quantity) {
+					var btnEliminar="<td><button type='button' id='btnEliminar' class='btn btn-danger' onClick='detail_v.eliminar("+cont+")'>X</button></td>";
+					var carticle="<td>"+article+"<input value="+article_id+" name='articles[]' type='hidden'/></td>";
+					var cquantity="<td><input value= "+quantity+" name='quantity[]' type='number' class='form-control'/></td>";
+					var cprice_sale="<td><input value= "+price_sale+" name='price_sale[]' type='number' class='form-control'/></td>";
+					var cdiscount="<td><input value= "+discount+" name='discount[]' type='number' class='form-control'/></td>";
+					subtotal[cont]=(quantity*price_sale)-discount;
+					total=total+subtotal[cont];
+					var ctotal="<input value="+total+" name='total' type='hidden'/>";
+					var csubtotal="<td> S/. "+subtotal[cont]+"</td>";						
+					var fila="<tr id='fila"+cont+"'>"+btnEliminar+carticle+cquantity+cprice_sale+cdiscount+csubtotal+"</tr>";
+					$("#detail").append(fila);
+					$('#total').html('S/. '+total+ctotal);
+					cont++;
+					console.log('stock'+stock);
+					console.log('cantidad'+quantity);
+				}else{
+					console.log('La cantidad excede al stock');
+				}
+				
 			}else{
 				console.log('Error en ventas');
 			}

@@ -15,9 +15,9 @@ class ArticlesController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function index()
+    public function index(Request $request)
     {
-        $articles=Article::orderBy('id','desc')->paginate(6);
+        $articles=Article::search($request->name)->orderBy('id','desc')->paginate(6);
         $articles->each(function($articles){
             $articles->category;
         });

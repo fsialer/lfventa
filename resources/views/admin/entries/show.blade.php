@@ -2,7 +2,7 @@
 @section('title','Detalle de la Entrada')
 @section('content')	
 	<div class="col-md-12 center-block quitar-float">
-		<div class="panel panel-primary">
+		<div class="panel panel-info">
 			<div class="panel-heading">Detalle de la Entrada</div>
 			<div class="panel-body">
 				
@@ -63,7 +63,7 @@
 	  				</div>
 	  			</div>
 	  			<div class="form-group texto-derecha">
-	  				<a href="">Regresar</a>
+	  				<a href="{{route('entries.index')}}" class="btn btn-default">Regresar</a>
 	  			</div>
 	  			
 	    		
