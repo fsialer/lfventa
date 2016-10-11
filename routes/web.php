@@ -11,11 +11,9 @@
 |
 */
 
-Route::get('/', function () {
-    return view('welcome');
-});
 
-Route::group(['prefix'=>'admin'],function(){
+
+Route::group(['prefix'=>'admin','middleware'=>'auth'],function(){
 	Route::resource('users','UsersController');
 	Route::get("users/{id}/destroy",['uses'=>'UsersController@destroy',
 		'as'=>'admin.users.destroy']);
@@ -49,6 +47,7 @@ Route::group(['prefix'=>'admin'],function(){
 
 });
 
-
-
-
+Auth::routes();
+Route::get('/',['uses'=>'FrontController@index','as'=>'admin.auth.login']);
+//Route::get('/dashboard',['uses'=>'FrontController@welcome','as'=>'admin.auth.welcome']);
+Route::get('/dashboard', 'HomeController@index');
