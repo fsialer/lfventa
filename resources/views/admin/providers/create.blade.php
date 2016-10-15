@@ -1,7 +1,23 @@
 @extends('admin.template.main')
 @section('title','Crear Proveedor')
 @section('content')	
-	<div class="col-md-6 center-block quitar-float">
+<div class="col-md-12">
+		<ol class="breadcrumb">
+		  <li><a href="{{url('admin/dashboard')}}">Admin</a></li>
+		  <li><a href="{{route('providers.index')}}">Proveddores</a></li>
+		  <li class="active">Crear</li>
+		</ol>
+ 	</div>
+	<div class="col-md-6 center-block quitar-float bajar">
+		@if (count($errors) > 0)
+	    	<div class="alert alert-danger">
+	        <ul>
+	            @foreach ($errors->all() as $error)
+	                <li>{{ $error }}</li>
+	            @endforeach
+	        </ul>
+	   		</div>
+		@endif
 		<div class="panel panel-success ">
 			<div class="panel-heading">Crear Proveedor</div>
 			<div class="panel-body">
@@ -24,7 +40,7 @@
 	  			</div>
 	  			<div class="form-group">	
 	    			{!!Form::label('email', 'Email', ['class' => ''])!!}			   
-				    {!!Form::email('email','',['class' => 'form-control','id'=>'email','placeholder'=>'Email'])!!}				   		   
+				    {!!Form::text('email','',['class' => 'form-control','id'=>'email','placeholder'=>'Email'])!!}				   		   
 	  			</div>
 	  			<div class="form-group texto-derecha">
 	  				{!! Form::submit('Registrar',['class'=>'btn btn-success']) !!}

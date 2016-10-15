@@ -5,7 +5,9 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 
 use App\Http\Requests;
+use App\Http\Requests\PersonRequest;
 use App\Person;
+use Laracasts\Flash\Flash;
 class CustomersController extends Controller
 {
     /**
@@ -35,12 +37,13 @@ class CustomersController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function store(PersonRequest $request)
     {
          $provider=new Person($request->all());
         //dd($article);
         $provider->type='cliente';
         $provider->save();
+        Flash::success("Se ha creado el cliente ".$provider->name.' de forma satisfactoria.')->important();
         return redirect()->route('customers.index');
     }
 
@@ -79,6 +82,7 @@ class CustomersController extends Controller
         $customer=Person::find($id);
         $customer->fill($request->all());
         $customer->save();
+        Flash::warning('Se ha editado el cliente '.$customer->name.' con exito.')->important();
         return redirect()->route('customers.index');
     }
 
@@ -92,6 +96,7 @@ class CustomersController extends Controller
     {
         $customer=Person::find($id);
         $customer->delete();      
+        Flash::error('Se ha borrado el cliente '.$customer->name .' de forma exitosa.')->important();
         return redirect()->route("customers.index");
     }
 }

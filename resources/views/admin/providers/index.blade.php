@@ -1,8 +1,16 @@
 @extends('admin.template.main')
 @section('title','Listado de Proveedores')
 @section('content')
- <div class="col-md-10 center-block quitar-float">
- 	<a href="{{route('providers.create')}}" class="btn btn-info">Agregar</a>
+<div class="col-md-12">
+		<ol class="breadcrumb">
+		  <li><a href="{{url('admin/dashboard')}}">Admin</a></li>
+	  <li class="active">Proveedores</li>
+		</ol>
+ 	</div>
+ <div class="col-md-12 center-block quitar-float bajar">
+ 	<div class="panel panel-default">
+ 		<div class="panel-body">
+ 			<a href="{{route('providers.create')}}" class="btn btn-info">Agregar</a>
 	 {!! Form::open(['route'=>'providers.index','method'=>'GET','class'=>'navbar-form pull-right']) !!}
 	<div class="input-group">
 		{!! Form::text('name',null,['class'=>'form-control','placeholder'=>'Buscar Nombre..']) !!}
@@ -10,6 +18,7 @@
 	</div>
 	{!! Form::close() !!}
 	 <hr>
+	 @include('flash::message')
  	<div class="panel panel-info">
  		<div class="panel-heading">
  			Listado de Proveedores
@@ -48,5 +57,8 @@
  			
  		</div> 		
  	</div>
+ 		</div>
+ 	</div>
+ 	
  </div>
 @endsection

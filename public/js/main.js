@@ -49,6 +49,13 @@ $(document).ready(function(){
         	$("#price_sale").val(data.avg);
     	});
 	});
+	$("#confirm").confirm({
+		title:"Confirmacion de eliminación",
+		text:"¿Estas seguro de querer eliminar este registro?",
+		confirmButton:"Si",
+		cancelButton:"No"
+	});
+	$("#btnRegistrar").hide();
 	
 });
 	var cont=0;
@@ -75,8 +82,10 @@ $(document).ready(function(){
 			$("#detail").append(fila);
 			$('#total').html('S/. '+total+ctotal);
 			cont++;
-
+			detail.limpiar();
+			detail.evaluar();
 		}else{
+			alert('Revise los datos ingresados');
 			console.log('Error revisa');
 		}
 		
@@ -86,8 +95,24 @@ $(document).ready(function(){
 		ctotal="<input value="+total+" name='total' type='hidden'/>";
 		$('#fila'+index).remove();
 		$('#total').html('S/. '+total+ctotal);
+		detail.evaluar();
 		
+		},
+	limpiar:function(){
+		//('#article_id').text('');
+		$('#quantity').val("");
+		$('#price_sale').val("");
+		$('#price_buy').val("");
+
+		},
+	evaluar:function(){
+		if (total<=0) {
+			$("#btnRegistrar").hide();
+		}else{
+			$("#btnRegistrar").show();
 		}
+	}
+
 	};
 
 	var detail_v={
@@ -115,11 +140,15 @@ $(document).ready(function(){
 					cont++;
 					console.log('stock'+stock);
 					console.log('cantidad'+quantity);
+					detail_v.limpiar();
+					detail_v.evaluar();
 				}else{
+					alert('La cantidad excede al stock');
 					console.log('La cantidad excede al stock');
 				}
 				
 			}else{
+				alert('Revise los datos ingresados');
 				console.log('Error en ventas');
 			}
 
@@ -129,9 +158,21 @@ $(document).ready(function(){
 			ctotal="<input value="+total+" name='total' type='hidden'/>";
 			$('#fila'+index).remove();
 			$('#total').html('S/. '+total+ctotal);
+			detail_v.evaluar();
+		},
+		limpiar:function(){
+			$('#quantity').val("");
+			$('#stock').val("");
+			$('#price_sale').val("");
+			$('#discount').val("");
+
+		},
+		evaluar:function(){
+			if (total<=0) {
+				$("#btnRegistrar").hide();
+			}else{
+				$("#btnRegistrar").show();
+			}
 		}
 	}
-	
-
-
 	

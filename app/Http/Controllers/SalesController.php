@@ -5,11 +5,14 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 
 use App\Http\Requests;
+use App\Http\Requests\SaleRequest;
 use App\Sale;
 use App\Article;
 use App\Person;
 use App\Entry;
 use App\User;
+use Laracasts\Flash\Flash;
+
 class SalesController extends Controller
 {
     /**
@@ -35,7 +38,9 @@ class SalesController extends Controller
     {
       
        $customers=Person::orderBy('name','ASC')->where('type','cliente')->pluck('name', 'id');       
-       $articles=Article::orderBy('name','ASC')->pluck('name', 'id');
+       $articles=Article::orderBy('name','ASC')->where('stock','>',0)->pluck('name', 'id');
+       $customers->prepend('',0);
+       $articles->prepend('',0);
        return view('admin.sales.create')->with('customers',$customers)->with('articles',$articles);
     }
 
@@ -45,7 +50,7 @@ class SalesController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function store(SaleRequest $request)
     {
        $sale=new Sale($request->all());
        $sale->date=\Carbon\Carbon::now('America/Lima');
@@ -58,6 +63,7 @@ class SalesController extends Controller
           $data[$value]=['quantity'=>$request->quantity[$key],'discount'=>$request->discount[$key],'price_sale'=>$request->price_sale[$key]];
        }
        $sale->articles()->sync($data);
+       Flash::success("Se ha creado la venta ".$sale->serie_voucher.'-'.$sale->num_voucher.' de forma satisfactoria.')->important();
        return redirect()->route('sales.index');
     }
 
@@ -109,6 +115,7 @@ class SalesController extends Controller
        $sale=Sale::find($id);
        $sale->state='cancelado';        
        $sale->save();
+       Flash::error("Se ha cancelado la venta ".$sale->serie_voucher.'-'.$sale->num_voucher.' de forma satisfactoria.')->important();
        return redirect()->route('sales.index');
     }
 

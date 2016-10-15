@@ -17,7 +17,7 @@ class AddArticlesTable extends Migration
             $table->increments('id');
             $table->integer('category_id')->unsigned();
             $table->string('code',50)->unique();
-            $table->string('name',90);
+            $table->string('name',90)->unique();
             $table->integer('stock')->unsigned();
             $table->text('description');
             $table->enum('state',['activo','inactivo'])->default('activo');             

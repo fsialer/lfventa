@@ -5,9 +5,11 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 
 use App\Http\Requests;
+use App\Http\Requests\EntryRequest;
 use App\Entry;
 use App\Person;
 use App\Article;
+use Laracasts\Flash\Flash;
 
 class EntriesController extends Controller
 {
@@ -33,7 +35,9 @@ class EntriesController extends Controller
     public function create()
     {
         $providers=Person::orderBy('name','ASC')->where('type','proveedor')->pluck('name', 'id');
-        $articles=Article::orderBy('name','ASC')->pluck('name', 'id');
+        $articles=Article::orderBy('name','ASC')->where('stock','>',0)->pluck('name', 'id');
+        $providers->prepend('',0);
+        $articles->prepend('',0);
         //dd($categories);      
        return view('admin.entries.create')->with('providers',$providers)->with('articles',$articles);
     }
@@ -44,7 +48,7 @@ class EntriesController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function store(EntryRequest $request)
     {
        $entry=new Entry($request->all());
        $entry->date=\Carbon\Carbon::now('America/Lima');
@@ -55,7 +59,7 @@ class EntriesController extends Controller
           $data[$value]=['quantity'=>$request->quantity[$key],'price_sale'=>$request->price_sale[$key],'price_buy'=>$request->price_buy[$key]];
        }
        $entry->articles()->sync($data);
-
+       Flash::success("Se ha creado la compra ".$entry->serie_voucher.'-'.$entry->num_voucher.' de forma satisfactoria.')->important();
        return redirect()->route('entries.index');
     }
 
@@ -107,6 +111,7 @@ class EntriesController extends Controller
         $entry=Entry::find($id);
         $entry->state='cancelado';        
         $entry->save();
+        Flash::error("Se ha cancelado la compra ".$entry->serie_voucher.'-'.$entry->num_voucher.' de forma satisfactoria.')->important();
         return redirect()->route('entries.index');
     }
 }

@@ -1,9 +1,16 @@
 @extends('admin.template.main')
 @section('title','Listado de Usuarios')
 @section('content')
- <div class="col-md-8 center-block quitar-float">
- 	
- 	<a href="{{route('users.create')}}" class="btn btn-info">Agregar</a>
+<div class="col-md-12">
+		<ol class="breadcrumb">
+		  <li><a href="{{url('admin/dashboard')}}">Admin</a></li>
+	  <li class="active">Usuarios</li>
+		</ol>
+ 	</div>
+ <div class="col-md-12 center-block quitar-float bajar">
+ 	<div class="panel panel-default">
+ 		<div class="panel-body">
+ 			<a href="{{route('users.create')}}" class="btn btn-info">Agregar</a>
 <!-- Buscador de tags -->
 	{!! Form::open(['route'=>'users.index','method'=>'GET','class'=>'navbar-form pull-right']) !!}
 	<div class="input-group">
@@ -12,6 +19,7 @@
 	</div>
 	{!! Form::close() !!}
 	<hr>
+	@include('flash::message')
 <!-- Fin del Buscador de tags -->
  	<div class="panel panel-info">
  		<div class="panel-heading">
@@ -48,5 +56,8 @@
  			
  		</div> 		
  	</div>
+ 		</div>
+ 	</div>
+ 	
  </div>
 @endsection

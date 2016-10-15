@@ -44,10 +44,9 @@ Route::group(['prefix'=>'admin','middleware'=>'auth'],function(){
 	//ajax
 	Route::get("sales/{id}/loadop",['uses'=>'SalesController@loadop',
 		'as'=>'admin.sales.loadop']);
-
+	Route::get('/dashboard', 'HomeController@index');
 });
 
 Auth::routes();
 Route::get('/',['uses'=>'FrontController@index','as'=>'admin.auth.login']);
-//Route::get('/dashboard',['uses'=>'FrontController@welcome','as'=>'admin.auth.welcome']);
-Route::get('/dashboard', 'HomeController@index');
+

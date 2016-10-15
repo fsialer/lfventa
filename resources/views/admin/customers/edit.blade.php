@@ -1,7 +1,14 @@
 @extends('admin.template.main')
 @section('title','Editar Cliente')
 @section('content')	
-	<div class="col-md-6 center-block quitar-float">
+<div class="col-md-12">
+		<ol class="breadcrumb">
+		  <li><a href="{{url('admin/dashboard')}}">Admin</a></li>
+		  <li><a href="{{route('customers.index')}}">Clientes</a></li>
+		  <li class="active">Editar</li>
+		</ol>
+ 	</div>
+	<div class="col-md-6 center-block quitar-float bajar">
 		<div class="panel panel-warning ">
 			<div class="panel-heading">Editar Cliente-{{$customer->name}}</div>
 			<div class="panel-body">

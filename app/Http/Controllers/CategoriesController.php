@@ -5,7 +5,9 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 
 use App\Http\Requests;
+use App\Http\Requests\CategoryRequest;
 use App\Category;
+use Laracasts\Flash\Flash;
 class CategoriesController extends Controller
 {
     /**
@@ -35,10 +37,11 @@ class CategoriesController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function store(CategoryRequest $request)
     {
         $category=new Category($request->all());
         $category->save();
+        Flash::success("Se ha creado la categoria ".$category->name.' de forma satisfactoria.')->important();
         return redirect()->route('categories.index');
     }
 
@@ -77,6 +80,7 @@ class CategoriesController extends Controller
         $category=Category::find($id);
         $category->fill($request->all());
         $category->save();
+        Flash::warning('Se ha editado la categoria '.$category->name.' con exito.')->important();
         return redirect()->route('categories.index');
     }
 
@@ -90,7 +94,7 @@ class CategoriesController extends Controller
     {
         $category=Category::find($id);
         $category->delete();
-      
+        Flash::error('Se ha borrado la categoria '.$category->name .' de forma exitosa.')->important();
         return redirect()->route("categories.index");
     }
 }

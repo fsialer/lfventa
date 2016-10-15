@@ -5,7 +5,9 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 
 use App\Http\Requests;
+use App\Http\Requests\UserRequest;
 use App\User;
+use Laracasts\Flash\Flash;
 
 class UsersController extends Controller
 {
@@ -37,11 +39,12 @@ class UsersController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function store(UserRequest $request)
     {
         $user=new User($request->all());
         $user->password=bcrypt($user->password);
         $user->save();
+        Flash::success("Se ha creado el usuario ".$user->name.' de forma satisfactoria.')->important();
         return redirect()->route('users.index');
     }
 
@@ -80,6 +83,7 @@ class UsersController extends Controller
         $user=User::find($id);
         $user->fill($request->all());
         $user->save();
+        Flash::warning('Se ha editado el usuario '.$user->name.' con exito.')->important();
          return redirect()->route('users.index');
     }
 
@@ -93,7 +97,7 @@ class UsersController extends Controller
     {
         $user=User::find($id);
         $user->delete();
-      
+        Flash::error('Se ha borrado el usuario '.$user->name .' de forma exitosa.')->important();
         return redirect()->route("users.index");
     }
 }

@@ -1,8 +1,16 @@
 @extends('admin.template.main')
 @section('title','Listado de Ventas')
 @section('content')
- <div class="col-md-10 center-block quitar-float">
- 	<a href="{{route('sales.create')}}" class="btn btn-info">Agregar</a>
+<div class="col-md-12">
+		<ol class="breadcrumb">
+		  <li><a href="{{url('admin/dashboard')}}">Admin</a></li>
+	  <li class="active">Ventas</li>
+		</ol>
+ 	</div>
+ <div class="col-md-12 center-block quitar-float bajar">
+ 	<div class="panel panel-default">
+ 		<div class="panel-body">
+ 			<a href="{{route('sales.create')}}" class="btn btn-info">Agregar</a>
 	 {!! Form::open(['route'=>'sales.index','method'=>'GET','class'=>'navbar-form pull-right']) !!}
 	<div class="input-group">
 		{!! Form::text('num_voucher',null,['class'=>'form-control','placeholder'=>'Buscar comprobante..']) !!}
@@ -10,6 +18,7 @@
 	</div>
 	{!! Form::close() !!}
 	<hr>
+	@include('flash::message')
  	<div class="panel panel-info">
  		<div class="panel-heading">
  			Listado de Ventas
@@ -50,5 +59,8 @@
  			
  		</div> 		
  	</div>
+ 		</div>
+ 	</div>
+ 	
  </div>
 @endsection

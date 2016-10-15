@@ -1,7 +1,14 @@
 @extends('admin.template.main')
 @section('title','Detalle de la Entrada')
 @section('content')	
-	<div class="col-md-12 center-block quitar-float">
+<div class="col-md-12">
+		<ol class="breadcrumb">
+		  <li><a href="{{url('admin/dashboard')}}">Admin</a></li>
+		  <li><a href="{{route('entries.index')}}">Entradas</a></li>
+		  <li class="active">Detalle</li>
+		</ol>
+ 	</div>
+	<div class="col-md-12 center-block quitar-float bajar">
 		<div class="panel panel-info">
 			<div class="panel-heading">Detalle de la Entrada</div>
 			<div class="panel-body">

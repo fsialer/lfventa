@@ -8,19 +8,12 @@
       rel="stylesheet">
 	<link rel="stylesheet" href="{{asset('plugins/bootstrap/css/bootstrap.min.css')}}" type="text/css">
 	<link rel="stylesheet" type="text/css" href="{{asset('css/main.css')}}">
+	
 </head>
 <body>
-<nav class="navbar navbar-default navbar-static-top">
-	<div class="container">
-            <div class="navbar-header">
-            	 <a class="navbar-brand" href="{{ url('/') }}">
-                    FVenta
-                </a>
-            </div>
-    </div>
-</nav>
 
-<section class="container ">
+
+<section class="container">
 		@yield('content')	
 </section>
 @include('admin.template.partials.footer')

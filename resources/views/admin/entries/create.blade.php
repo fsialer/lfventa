@@ -1,7 +1,23 @@
 @extends('admin.template.main')
 @section('title','Crear Entradas')
 @section('content')	
-	<div class="col-md-12 center-block quitar-float">
+<div class="col-md-12">
+		<ol class="breadcrumb">
+		  <li><a href="{{url('admin/dashboard')}}">Admin</a></li>
+		  <li><a href="{{route('entries.index')}}">Entradas</a></li>
+		  <li class="active">Crear</li>
+		</ol>
+ 	</div>
+	<div class="col-md-12 center-block quitar-float bajar">
+		@if (count($errors) > 0)
+	    	<div class="alert alert-danger">
+	        <ul>
+	            @foreach ($errors->all() as $error)
+	                <li>{{ $error }}</li>
+	            @endforeach
+	        </ul>
+	   		</div>
+		@endif
 		<div class="panel panel-success">
 			<div class="panel-heading">Crear Entradas</div>
 			<div class="panel-body">
@@ -69,7 +85,7 @@
 	  				</div>
 	  			</div>
 	  			<div class="form-group texto-derecha">
-	  				{!! Form::submit('Registrar',['class'=>'btn btn-success']) !!}
+	  				{!! Form::submit('Registrar',['class'=>'btn btn-success','id'=>'btnRegistrar']) !!}
 	  				<a href="{{route('entries.index')}}" class="btn btn-default">Cancelar</a>
 	  			</div>
 	  			

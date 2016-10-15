@@ -3,7 +3,10 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
-
+use App\Article;
+use App\Entry;
+use App\Sale;
+use App\User;
 class HomeController extends Controller
 {
     /**
@@ -11,18 +14,23 @@ class HomeController extends Controller
      *
      * @return void
      */
-    public function __construct()
-    {
-        $this->middleware('auth');
-    }
+
 
     /**
      * Show the application dashboard.
      *
      * @return \Illuminate\Http\Response
      */
+    public function __construct(){
+        \Carbon\Carbon::setlocale('es');
+        
+    }
     public function index()
     {
-        return view('welcome');
+        $articles=Article::count();
+        $entries=Entry::count();
+        $sales=Sale::count();
+        $users=User::count();
+        return view('welcome')->with('articles',$articles)->with('entries',$entries)->with('sales',$sales)->with('users',$users);
     }
 }

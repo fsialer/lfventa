@@ -15,7 +15,7 @@ class AddCategoriesTable extends Migration
     {
         Schema::create('categories', function (Blueprint $table) {
             $table->increments('id');
-            $table->string('name',90);
+            $table->string('name',90)->unique();
             $table->text('description');
             $table->enum('state',['activo','inactivo'])->default('activo');
             $table->timestamps();

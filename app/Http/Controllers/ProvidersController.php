@@ -5,7 +5,10 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 
 use App\Http\Requests;
+use App\Http\Requests\PersonRequest;
 use App\Person;
+use Laracasts\Flash\Flash;
+
 class ProvidersController extends Controller
 {
     /**
@@ -35,12 +38,13 @@ class ProvidersController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function store(PersonRequest $request)
     {
         $provider=new Person($request->all());
         //dd($article);
         $provider->type='proveedor';
         $provider->save();
+        Flash::success("Se ha creado el proveedor ".$provider->name.' de forma satisfactoria.')->important();
         return redirect()->route('providers.index');
     }
 
@@ -79,6 +83,7 @@ class ProvidersController extends Controller
         $provider=Person::find($id);
         $provider->fill($request->all());
         $provider->save();
+        Flash::warning('Se ha editado el proveedor '.$provider->name.' con exito.')->important();
         return redirect()->route('providers.index');
     }
 
@@ -91,7 +96,8 @@ class ProvidersController extends Controller
     public function destroy($id)
     {
         $provider=Person::find($id);
-        $provider->delete();      
+        $provider->delete(); 
+        Flash::error('Se ha borrado el proveedor '.$provider->name .' de forma exitosa.')->important();     
         return redirect()->route("providers.index");
     }
 }

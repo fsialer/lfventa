@@ -1,7 +1,23 @@
 @extends('admin.template.main')
 @section('title','Editar Categoria')
 @section('content')	
-	<div class="col-md-6 center-block quitar-float">
+<div class="col-md-12">
+		<ol class="breadcrumb">
+		  <li><a href="{{url('admin/dashboard')}}">Admin</a></li>
+		  <li><a href="{{route('categories.index')}}">Categorias</a></li>
+		  <li class="active">Editar</li>
+		</ol>
+ 	</div>
+	<div class="col-md-6 center-block quitar-float bajar">
+		@if (count($errors) > 0)
+	    	<div class="alert alert-danger">
+	        <ul>
+	            @foreach ($errors->all() as $error)
+	                <li>{{ $error }}</li>
+	            @endforeach
+	        </ul>
+	   		</div>
+		@endif
 		<div class="panel panel-warning ">
 			<div class="panel-heading">Editar Categoria-{{$category->name}}</div>
 			<div class="panel-body">

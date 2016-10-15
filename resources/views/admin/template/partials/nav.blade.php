@@ -1,51 +1,91 @@
-<nav class="navbar navbar-default">
-  <div class="container-fluid">
-    <!-- Brand and toggle get grouped for better mobile display -->
-    <div class="navbar-header">
-      <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1" aria-expanded="false">
-        <span class="sr-only">Toggle navigation</span>
-        <span class="icon-bar"></span>
-        <span class="icon-bar"></span>
-        <span class="icon-bar"></span>
-      </button>
-      <a class="navbar-brand" href="{{ url('/dashboard') }}"><img src="{{asset('img/logo.png')}}" width="20" height="20"></a>
-    </div>
+<nav class="navbar navbar-default navbar-static-top" role="navigation" style="margin-bottom: 0">
+            <div class="navbar-header">
+                <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+                    <span class="sr-only">Toggle navigation</span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                </button>
+                <a class="navbar-brand" href="{{ url('admin/dashboard') }}"><img src="{{asset('img/logo.png')}}" width="20" height="20"></a>
+            </div>
+            <!-- /.navbar-header -->
 
-    <!-- Collect the nav links, forms, and other content for toggling -->
-    <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
-      <ul class="nav navbar-nav">
-        @if(Auth::user()->type=='admin')
-        <li class=""><a href="{{route('users.index')}}">Usuarios <span class="sr-only">(current)</span></a></li>
-        @endif        
-        <li class=""><a href="{{route('categories.index')}}">Categorias <span class="sr-only">(current)</span></a></li>
-        <li class=""><a href="{{route('articles.index')}}">Articulos <span class="sr-only">(current)</span></a></li>
-        <li class=""><a href="{{route('customers.index')}}">Clientes <span class="sr-only">(current)</span></a></li>
-        <li class=""><a href="{{route('providers.index')}}">Proveedores <span class="sr-only">(current)</span></a></li>
-        <li class=""><a href="{{route('entries.index')}}">Entradas <span class="sr-only">(current)</span></a></li>
-        <li class=""><a href="{{route('sales.index')}}">Ventas <span class="sr-only">(current)</span></a></li>
-      </ul>
-      <ul class="nav navbar-nav navbar-right">
-        <li><a href="#">Dropdown</a></li>
-        <li class="dropdown">
-          <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">{{ Auth::user()->name }} <span class="caret"></span></a>
-          <ul class="dropdown-menu">
-            <li><a href="#">Editar Perfil</a></li>
-            <li><a href="#">Cambiar Contraseña</a></li>
-            <li role="separator" class="divider"></li>
-            <li>
-              <a href="{{ url('/logout') }}"
+            <ul class="nav navbar-top-links navbar-right">
+               
+                <!-- /.dropdown -->
+               
+                <!-- /.dropdown -->
+                
+                <!-- /.dropdown -->
+                
+                <li class="dropdown">
+                    <a class="dropdown-toggle" data-toggle="dropdown" href="#">
+                        <i class="fa fa-user fa-fw"></i> <i class="fa fa-caret-down"></i>
+                    </a>
+                    <ul class="dropdown-menu dropdown-user">
+                        <li><a href=""><i class="fa fa-user fa-fw"></i>{{ Auth::user()->name }}</a>
+                        </li>
+                        <li><a href="#"><i class="fa fa-gear fa-fw"></i> Cambiar Clave</a>
+                        </li>
+                        <li class="divider"></li>
+                        <li><a href="{{ url('/logout') }}"
                                         onclick="event.preventDefault();
                                                  document.getElementById('logout-form').submit();">
-                                        Cerrar Sesión
+                                        <i class="fa fa-sign-out fa-fw"></i>Cerrar Sesión
                                     </a>
 
                                     <form id="logout-form" action="{{ url('/logout') }}" method="POST" style="display: none;">
                                         {{ csrf_field() }}
                                     </form>
-            </li>
-          </ul>
-        </li>
-      </ul>
-    </div><!-- /.navbar-collapse -->
-  </div><!-- /.container-fluid -->
+                        </li>
+                    </ul>
+                    <!-- /.dropdown-user -->
+                </li>
+                <!-- /.dropdown -->
+            </ul>
+            <!-- /.navbar-top-links -->
+
+            <div id="sm" class="navbar-default sidebar" role="navigation">
+                <div class="sidebar-nav navbar-collapse">
+                    <ul class="nav" id="side-menu">                        
+                        <li>
+                            <a href="{{ url('admin/dashboard') }}"><i class="fa fa-dashboard fa-fw"></i> Dashboard</a>
+                        </li>
+                        <li>
+                            <a href="#"><i class="fa fa-truck fa-fw"></i> Almacen<span class="fa arrow"></span></a>
+                            <ul class="nav nav-second-level">
+                                <li><a href="{{route('categories.index')}}">Categorias</a></li>
+                                <li><a href="{{route('articles.index')}}">Articulos</a></li>
+                            </ul>
+                            <!-- /.nav-second-level -->
+                        </li>
+                        <li>
+                            <a href="tables.html"><i class="fa fa-tasks fa-fw"></i> Compras<span class="fa arrow"></span></a>
+                            <ul class="nav nav-second-level">
+                                 <li><a href="{{route('providers.index')}}">Proveedor</a></li>
+                                 <li><a href="{{route('entries.index')}}">Entradas</a></li>
+                            </ul>
+                        </li>
+                        <li>
+                            <a href="forms.html"><i class="fa fa-shopping-cart fa-fw"></i> Ventas<span class="fa arrow"></span></a>
+                            <ul class="nav nav-second-level">
+                                  <li><a href="{{route('customers.index')}}">Cliente</a></li>
+                                  <li><a href="{{route('sales.index')}}">Venta</a></li>
+                            </ul>
+                        </li>
+                        @if(Auth::user()->type=='admin')
+                        <li>
+                            <a href="#"><i class="fa fa-user fa-fw"></i> Usuarios<span class="fa arrow"></span></a>
+                            <ul class="nav nav-second-level">
+                                <li><a href="{{route('users.index')}}">Usuario</a></li>
+                                <li><a href="#">Permisos</a></li>
+                            </ul>
+                            <!-- /.nav-second-level -->
+                        </li>  
+                        @endif                              
+                    </ul>
+                </div>
+                <!-- /.sidebar-collapse -->
+            </div>
+            <!-- /.navbar-static-side -->
 </nav>

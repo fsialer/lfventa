@@ -5,9 +5,10 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 
 use App\Http\Requests;
+use App\Http\Requests\ArticleRequest;
 use App\Article;
 use App\Category;
-
+use Laracasts\Flash\Flash;
 class ArticlesController extends Controller
 {
     /**
@@ -32,6 +33,7 @@ class ArticlesController extends Controller
     public function create()
     {
         $categories=Category::orderBy('name','ASC')->pluck('name', 'id');
+        $categories->prepend('',0);
         //dd($categories);      
        return view('admin.articles.create')->with('categories',$categories);
     }
@@ -42,11 +44,13 @@ class ArticlesController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function store(ArticleRequest $request)
     {
         $article=new Article($request->all());
         //dd($article);
         $article->save();
+        
+        Flash::success("Se ha creado el articulo ".$article->name.' de forma satisfactoria.')->important();
         return redirect()->route('articles.index');
     }
 
@@ -71,6 +75,7 @@ class ArticlesController extends Controller
     {
         $article=Article::find($id);
         $categories=Category::orderBy('name','ASC')->pluck('name', 'id');
+        $categories->prepend('',0);
         return view('admin.articles.edit')->with('article',$article)->with('categories',$categories);
     }
 
@@ -86,6 +91,7 @@ class ArticlesController extends Controller
         $article=Article::find($id);
         $article->fill($request->all());
         $article->save();
+        Flash::warning('Se ha editado el articulo '.$article->name.' con exito.')->important();
         return redirect()->route('articles.index');
     }
 
@@ -99,7 +105,7 @@ class ArticlesController extends Controller
     {
         $article=Article::find($id);
         $article->delete();
-      
+        Flash::error('Se ha borrado el articulo '.$article->name .' de forma exitosa.')->important();
         return redirect()->route("articles.index");
     }
 }

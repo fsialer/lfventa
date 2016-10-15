@@ -5,3 +5,32 @@
 .texto-derecha{
 	text-align:right;
 }
+body{
+	background-color: #2B4450;
+}
+#wrapper nav{
+	background-color: #2B4450
+}
+/*http://www.colorhunt.co/c/39317*/
+#wrapper #page-wrapper{
+	background-color:#DFEBED
+}
+
+/*navgeador vertical*/
+.content-login{
+	margin-top: 150px;
+	
+}
+.content-login .panel{
+	
+	background-color:#DFEBED
+}
+.login-logo{
+	font-size: 60px;
+	border-style: solid;
+	border-radius: 10px 10px 10px 10px;
+}
+.bajar{
+	margin-top: 45px;
+
+}
