@@ -21,7 +21,7 @@
 	 @include('flash::message')
  	<div class="panel panel-info">
  		<div class="panel-heading">
- 			Listado de Clientes
+ 			<h3>Listado de Clientes</h3>
  		</div>
  		<div class="panel-body">
  			<div class="table-responsive">

@@ -6,6 +6,7 @@ use Illuminate\Http\Request;
 
 use App\Http\Requests;
 use App\Http\Requests\UserRequest;
+use App\Http\Requests\UserResetRequest;
 use App\User;
 use Laracasts\Flash\Flash;
 
@@ -100,4 +101,16 @@ class UsersController extends Controller
         Flash::error('Se ha borrado el usuario '.$user->name .' de forma exitosa.')->important();
         return redirect()->route("users.index");
     }
+    public function reset(){
+         return view('admin.auth.passwords.reset');
+    }
+    //falta programar
+    public function change(UserResetRequest $request){
+        $user=User::find(\Auth::user()->id);
+        $user->password=bcrypt($request->password);
+        $user->save();
+        Flash::warning('Se ha cambiado la contraseña de el usuario '.$user->name.' con exito.')->important();
+        return redirect()->route('admin.dashboard');
+    }
+  
 }

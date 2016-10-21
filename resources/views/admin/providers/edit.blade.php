@@ -10,7 +10,7 @@
  	</div>
 	<div class="col-md-6 center-block quitar-float bajar">
 		<div class="panel panel-warning ">
-			<div class="panel-heading">Editar Proveedor-{{$provider->name}}</div>
+			<div class="panel-heading"><h3>Editar Proveedor-{{$provider->name}}</h3></div>
 			<div class="panel-body">
 				{!!Form::open(['route'=>['providers.update',$provider->id],'method'=>'PUT'])!!}
 				<div class="form-group">	

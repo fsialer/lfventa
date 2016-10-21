@@ -10,7 +10,7 @@
  	</div>
 	<div class="col-md-12 center-block quitar-float bajar">
 		<div class="panel panel-info">
-			<div class="panel-heading">Detalle de la venta Venta</div>
+			<div class="panel-heading"> <h3>Detalle de la venta Venta</h3></div>
 			<div class="panel-body">				
 				<div class="form-group">
 	  				{!!Form::label('customer_id', 'Cliente', ['class' => ''])!!}

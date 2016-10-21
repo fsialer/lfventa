@@ -21,7 +21,7 @@
 	@include('flash::message')
  	<div class="panel panel-info">
  		<div class="panel-heading">
- 			Listado de Ventas
+ 			<h3>Listado de Ventas</h3>
  		</div>
  		<div class="panel-body">
  			<div class="table-responsive">
@@ -46,7 +46,9 @@
 						
 						<td>
 							<a href="{{route('sales.show',$sale->id)}}" class="btn btn-info glyphicon glyphicon-list-alt"></a>
+							@if($sale->state=='atendido')
   		<a href="{{route('admin.sales.destroy',$sale->id)}}" onclick="return confirm('¿Estas seguro de eliminarlo.?')" class="btn btn-danger glyphicon glyphicon-remove-sign"></a>
+  							@endif
 						</td>
 					</tr>
 					@endforeach

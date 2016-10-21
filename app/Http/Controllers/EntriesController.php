@@ -108,9 +108,14 @@ class EntriesController extends Controller
      */
     public function destroy($id)
     {
-        $entry=Entry::find($id);
-        $entry->state='cancelado';        
-        $entry->save();
+        $entry=Entry::find($id);        
+        $entry->state='cancelado';
+        foreach ($entry->articles as $art) {
+            $article=Article::find($art->pivot->article_id);
+            $article->stock= $article->stock - $art->pivot->quantity;
+            $article->save();                     
+        } 
+        $entry->save();             
         Flash::error("Se ha cancelado la compra ".$entry->serie_voucher.'-'.$entry->num_voucher.' de forma satisfactoria.')->important();
         return redirect()->route('entries.index');
     }

@@ -14,9 +14,14 @@
 
 
 Route::group(['prefix'=>'admin','middleware'=>'auth'],function(){
+	
 	Route::resource('users','UsersController');
 	Route::get("users/{id}/destroy",['uses'=>'UsersController@destroy',
-		'as'=>'admin.users.destroy']);
+		'as'=>'admin.users.destroy']);	
+	Route::get("reset",['uses'=>'UsersController@reset',
+		'as'=>'admin.reset']);
+	Route::post("change",['uses'=>'UsersController@change',
+		'as'=>'admin.change']);		
 	//==================
 	Route::resource('categories','CategoriesController');
 	Route::get("categories/{id}/destroy",['uses'=>'CategoriesController@destroy',
@@ -44,7 +49,8 @@ Route::group(['prefix'=>'admin','middleware'=>'auth'],function(){
 	//ajax
 	Route::get("sales/{id}/loadop",['uses'=>'SalesController@loadop',
 		'as'=>'admin.sales.loadop']);
-	Route::get('/dashboard', 'HomeController@index');
+	Route::get('/dashboard', ['uses'=>'HomeController@index',
+		'as'=>'admin.dashboard']);
 });
 
 Auth::routes();

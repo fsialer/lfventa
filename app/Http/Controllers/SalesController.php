@@ -54,8 +54,7 @@ class SalesController extends Controller
     {
        $sale=new Sale($request->all());
        $sale->date=\Carbon\Carbon::now('America/Lima');
-       $sale->user()->dissociate();
-       $sale->user_id=2;
+       $sale->user_id=\Auth::user()->id;
        $sale->tax=1.8;
        $sale->save();
        $data;
@@ -113,7 +112,12 @@ class SalesController extends Controller
     public function destroy($id)
     {
        $sale=Sale::find($id);
-       $sale->state='cancelado';        
+       $sale->state='cancelado';     
+       foreach ($sale->articles as $art) {
+            $article=Article::find($art->pivot->article_id);
+            $article->stock= $article->stock + $art->pivot->quantity;
+            $article->save();                     
+        }    
        $sale->save();
        Flash::error("Se ha cancelado la venta ".$sale->serie_voucher.'-'.$sale->num_voucher.' de forma satisfactoria.')->important();
        return redirect()->route('sales.index');

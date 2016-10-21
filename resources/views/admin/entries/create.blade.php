@@ -19,7 +19,7 @@
 	   		</div>
 		@endif
 		<div class="panel panel-success">
-			<div class="panel-heading">Crear Entradas</div>
+			<div class="panel-heading"><h3>Crear Entradas</h3></div>
 			<div class="panel-body">
 				{!!Form::open(['route'=>'entries.store','method'=>'POST'])!!}
 				<div class="form-group">

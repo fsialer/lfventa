@@ -10,7 +10,7 @@
  	</div>
 	<div class="col-md-6 center-block quitar-float bajar">
 		<div class="panel panel-warning ">
-			<div class="panel-heading">Editar Usuario-{{$user->name}}</div>
+			<div class="panel-heading"><h3>Editar Usuario-{{$user->name}}</h3></div>
 			<div class="panel-body">
 				{!!Form::open(['route'=>['users.update',$user],'method'=>'PUT'])!!}
 	    		<div class="form-group">	

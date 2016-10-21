@@ -10,7 +10,7 @@
  	</div>
 	<div class="col-md-12 center-block quitar-float bajar">
 		<div class="panel panel-info">
-			<div class="panel-heading">Detalle de la Entrada</div>
+			<div class="panel-heading"><h3>Detalle de la Entrada</h3></div>
 			<div class="panel-body">
 				
 				<div class="form-group">

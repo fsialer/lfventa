@@ -23,7 +23,7 @@
 <!-- Fin del Buscador de tags -->
  	<div class="panel panel-info">
  		<div class="panel-heading">
- 			Listado de Usuarios
+ 			<h3>Listado de Usuarios</h3>
 
  		</div>
  		<div class="panel-body">

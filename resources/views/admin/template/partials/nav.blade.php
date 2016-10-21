@@ -20,12 +20,11 @@
                 
                 <li class="dropdown">
                     <a class="dropdown-toggle" data-toggle="dropdown" href="#">
-                        <i class="fa fa-user fa-fw"></i> <i class="fa fa-caret-down"></i>
+                        Bienvenido: {{ Auth::user()->name }}<i class="fa fa-user fa-fw"></i> <i class="fa fa-caret-down"></i>
                     </a>
                     <ul class="dropdown-menu dropdown-user">
-                        <li><a href=""><i class="fa fa-user fa-fw"></i>{{ Auth::user()->name }}</a>
-                        </li>
-                        <li><a href="#"><i class="fa fa-gear fa-fw"></i> Cambiar Clave</a>
+                       
+                        <li><a href="{{route('admin.reset')}}"><i class="fa fa-gear fa-fw"></i> Cambiar Clave</a>
                         </li>
                         <li class="divider"></li>
                         <li><a href="{{ url('/logout') }}"

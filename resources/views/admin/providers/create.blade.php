@@ -19,7 +19,7 @@
 	   		</div>
 		@endif
 		<div class="panel panel-success ">
-			<div class="panel-heading">Crear Proveedor</div>
+			<div class="panel-heading"><h3>Crear Proveedor</h3></div>
 			<div class="panel-body">
 				{!!Form::open(['route'=>'providers.store','method'=>'POST'])!!}
 				<div class="form-group">	

@@ -19,7 +19,7 @@
 	   		</div>
 		@endif
 		<div class="panel panel-warning ">
-			<div class="panel-heading">Editar Categoria-{{$category->name}}</div>
+			<div class="panel-heading"><h3>Editar Categoria-{{$category->name}}</h3></div>
 			<div class="panel-body">
 				{!!Form::open(['route'=>['categories.update',$category],'method'=>'PUT'])!!}
 	    		<div class="form-group">	
