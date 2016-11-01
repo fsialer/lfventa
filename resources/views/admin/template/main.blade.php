@@ -33,20 +33,15 @@
 <script   src="https://code.jquery.com/jquery-2.2.4.min.js"   integrity="sha256-BbhdlvQf/xTY9gja0Dq3HiwQF8LaCRTXxZKRutelT44="   crossorigin="anonymous"></script>
 <script type="text/javascript" src="{{asset('plugins/bootstrap/js/bootstrap.min.js')}}"></script>
 <script type="text/javascript"src="{{asset('plugins/chosen/chosen.jquery.min.js')}}"></script>
-@yield('js')
-
     <!-- Metis Menu Plugin JavaScript -->
  <script src="{{asset('plugins/vendor/metisMenu/metisMenu.min.js')}}"></script>
-
     <!-- Morris Charts JavaScript -->
  <script src="{{asset('plugins/vendor/raphael/raphael.min.js')}}"></script>
  <script src="{{asset('plugins/vendor/morrisjs/morris.min.js')}}"></script>
- <script src="{{asset('plugins/data/morris-data.js')}}"></script>
-
     <!-- Custom Theme JavaScript -->
  <script src="{{asset('plugins/dist/js/sb-admin-2.js')}}"></script>
  <script src="{{asset('plugins/confirm/jquery.confirm.min.js')}}"></script>
-
+@yield('js')
 
 </body>
 </html>

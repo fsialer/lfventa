@@ -44,9 +44,13 @@
 						<td>{{$entry->total}}</td>
 						<td>{{$entry->state}}</td>
 						<td>
-							<a href="{{route('entries.show',$entry->id)}}" class="btn btn-info glyphicon glyphicon-list-alt"></a>
+							<a href="{{route('entries.show',$entry->id)}}" class="btn btn-info ">
+								<span class="glyphicon glyphicon-list-alt"></span>
+							</a>
 							@if($entry->state=='atendido')
-  		<a href="{{route('admin.entries.destroy',$entry->id)}}" onclick="return confirm('¿Estas seguro de eliminarlo.?')" class="btn btn-danger glyphicon glyphicon-remove-sign"></a>
+  							<a href="{{route('admin.entries.destroy',$entry->id)}}" class="btn btn-danger confirm2">
+  								<span class="glyphicon glyphicon-remove-sign"></span>
+  							</a>
   		 					@endif
 						</td>
 					</tr>
@@ -64,4 +68,7 @@
  	</div>
  	
  </div>
+@endsection
+@section('js')	
+<script type="text/javascript" src="{{asset('js/main.js')}}"></script>
 @endsection

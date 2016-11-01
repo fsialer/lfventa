@@ -45,9 +45,13 @@
 						<td>{{$sale->state}}</td>
 						
 						<td>
-							<a href="{{route('sales.show',$sale->id)}}" class="btn btn-info glyphicon glyphicon-list-alt"></a>
+							<a href="{{route('sales.show',$sale->id)}}" class="btn btn-info ">
+								<span class="glyphicon glyphicon-list-alt"></span>
+							</a>
 							@if($sale->state=='atendido')
-  		<a href="{{route('admin.sales.destroy',$sale->id)}}" onclick="return confirm('¿Estas seguro de eliminarlo.?')" class="btn btn-danger glyphicon glyphicon-remove-sign"></a>
+  							<a href="{{route('admin.sales.destroy',$sale->id)}}"  class="btn btn-danger confirm2">
+  								<span class="glyphicon glyphicon-remove-sign"></span>
+  							</a>
   							@endif
 						</td>
 					</tr>
@@ -65,4 +69,7 @@
  	</div>
  	
  </div>
+@endsection
+@section('js')	
+<script type="text/javascript" src="{{asset('js/main.js')}}"></script>
 @endsection

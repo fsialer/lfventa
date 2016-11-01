@@ -49,12 +49,19 @@ $(document).ready(function(){
         	$("#price_sale").val(data.avg);
     	});
 	});
-	$("#confirm").confirm({
+	$(".confirm").confirm({
 		title:"Confirmacion de eliminación",
 		text:"¿Estas seguro de querer eliminar este registro?",
 		confirmButton:"Si",
 		cancelButton:"No"
 	});
+	$(".confirm2").confirm({
+		title:"Confirmacion de Cancelación",
+		text:"¿Estas seguro de querer cancelar este registro?",
+		confirmButton:"Si",
+		cancelButton:"No"
+	});
+
 	$("#btnRegistrar").hide();
 	
 });

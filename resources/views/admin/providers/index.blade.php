@@ -43,8 +43,12 @@
 						<td>{{$provider->email}}</td>
 						<td>{{$provider->state}}</td>
 						<td>
-							<a href="{{route('providers.edit',$provider->id)}}" class="btn btn-warning glyphicon glyphicon-wrench"></a>
-  		<a href="{{route('admin.providers.destroy',$provider->id)}}" onclick="return confirm('¿Estas seguro de eliminarlo.?')" class="btn btn-danger glyphicon glyphicon-remove-sign"></a>
+							<a href="{{route('providers.edit',$provider->id)}}" class="btn btn-warning ">
+								<span class="glyphicon glyphicon-wrench"></span>
+							</a>
+  							<a href="{{route('admin.providers.destroy',$provider->id)}}"  class="btn btn-danger confirm">
+  								<span class="glyphicon glyphicon-remove-sign"></span>
+  							</a>
 						</td>
 					</tr>
 					@endforeach
@@ -61,4 +65,7 @@
  	</div>
  	
  </div>
+@endsection
+@section('js')	
+<script type="text/javascript" src="{{asset('js/main.js')}}"></script>
 @endsection

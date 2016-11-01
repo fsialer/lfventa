@@ -39,8 +39,12 @@
 						<td>{{$category->description}}</td>
 						<td>{{$category->state}}</td>
 						<td>
-							<a href="{{route('categories.edit',$category->id)}}" class="btn btn-warning glyphicon glyphicon-wrench"></a>
-  		<a href="{{route('admin.categories.destroy',$category->id)}}" onclick="return confirm('¿Estas seguro de eliminarlo.?')" class="btn btn-danger glyphicon glyphicon-remove-sign"></a>
+							<a href="{{route('categories.edit',$category->id)}}" class="btn btn-warning ">
+								<span class="glyphicon glyphicon-wrench"></span>
+							</a>
+  							<a href="{{route('admin.categories.destroy',$category->id)}}" class="btn btn-danger confirm">
+  							<span class="glyphicon glyphicon-remove-sign"></span>
+  							</a>
 						</td>
 					</tr>
 					@endforeach
@@ -57,4 +61,7 @@
  	</div>
  	
  </div>
+@endsection
+@section('js')	
+<script type="text/javascript" src="{{asset('js/main.js')}}"></script>
 @endsection

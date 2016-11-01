@@ -77,7 +77,6 @@
                             <a href="#"><i class="fa fa-user fa-fw"></i> Usuarios<span class="fa arrow"></span></a>
                             <ul class="nav nav-second-level">
                                 <li><a href="{{route('users.index')}}">Usuario</a></li>
-                                <li><a href="#">Permisos</a></li>
                             </ul>
                             <!-- /.nav-second-level -->
                         </li>  
