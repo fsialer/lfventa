@@ -2,13 +2,10 @@ Sistema Web de Ventas.
 =====================
 
 Para poder restaurar la base de datos, se utilizara el comando:
-<<<<<<< HEAD
+
 php artisan migrate. 
-Posteriormente, se ejecutaran 
-=======
-php artisan migrate:refresh. Posteriormente, se ejecutaran 
->>>>>>> origin/master
-estos 2 disparadores(Triggers).
+
+Posteriormente, se ejecutaran estos 2 disparadores(Triggers).
 
 ## tr_updateStockEntry
 CREATE DEFINER=`root`@`127.0.0.1` TRIGGER `tr_updateStockEntry` AFTER INSERT ON `article_entry` FOR EACH ROW BEGIN
@@ -27,7 +24,6 @@ Estos triggers se podran ejecutar en mysql, si se desea implementar en
 otro gestor(postgres,oracle, etc), tener encuenta su sintaxis. La base
 de datos puede operar en cualquier gestor de base de datos que maneje laravel, solo debe configurar.
 Este Sistema esta por defecto con mysql
-<<<<<<< HEAD
-=======
 
->>>>>>> origin/master
+
+
