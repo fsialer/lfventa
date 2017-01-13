@@ -72,6 +72,12 @@
                                   <li><a href="{{route('sales.index')}}">Venta</a></li>
                             </ul>
                         </li>
+                         <li>
+                            <a href="forms.html"><i class="glyphicon glyphicon-list-alt"></i> Reportes <span class="fa arrow"></span></a>
+                            <ul class="nav nav-second-level">
+                                  <li><a href="{{route('reports.index')}}">Reportes</a></li>
+                            </ul>
+                        </li>
                         @if(Auth::user()->type=='admin')
                         <li>
                             <a href="#"><i class="fa fa-user fa-fw"></i> Usuarios<span class="fa arrow"></span></a>

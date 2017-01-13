@@ -46,11 +46,25 @@ Route::group(['prefix'=>'admin','middleware'=>'auth'],function(){
 	Route::resource('sales','SalesController');
 	Route::get("sales/{id}/destroy",['uses'=>'SalesController@destroy',
 		'as'=>'admin.sales.destroy']);	
+    //===========================
+    Route::resource('reports','PdfController');
+    Route::get("reports/{id}/report_article",['uses'=>'PdfController@report_article',
+		'as'=>'admin.reports.report_article']);	
+    Route::get("reports/{id}/report_entry",['uses'=>'PdfController@report_entry',
+		'as'=>'admin.reports.report_entry']);
+    Route::get("reports/{id}/report_sale",['uses'=>'PdfController@report_sale',
+		'as'=>'admin.reports.report_sale']);
+    Route::get("reports/{id}/report_customer",['uses'=>'PdfController@report_customer',
+		'as'=>'admin.reports.report_customer']);
+    Route::get("reports/{id}/report_user",['uses'=>'PdfController@report_user',
+		'as'=>'admin.reports.report_user']);
+	//?===================================	
 	//ajax
 	Route::get("sales/{id}/loadop",['uses'=>'SalesController@loadop',
 		'as'=>'admin.sales.loadop']);
 	Route::get('/dashboard', ['uses'=>'HomeController@index',
 		'as'=>'admin.dashboard']);
+    
 });
 
 Auth::routes();

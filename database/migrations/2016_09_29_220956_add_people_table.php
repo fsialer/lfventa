@@ -21,7 +21,7 @@ class AddPeopleTable extends Migration
             $table->string('phone',40);
             $table->string('email',60)->unique();
             $table->enum('state',['activo','inactivo'])->default('activo');
-             $table->enum('type',['proveedor','cliente']);
+            $table->enum('type',['proveedor','cliente']);
             $table->timestamps();
         });
     }
