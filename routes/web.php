@@ -62,6 +62,12 @@ Route::group(['prefix'=>'admin','middleware'=>'auth'],function(){
 	//ajax
 	Route::get("sales/{id}/loadop",['uses'=>'SalesController@loadop',
 		'as'=>'admin.sales.loadop']);
+    Route::get("ajax/ajaxATSale",['uses'=>'ajaxController@ajaxATSale',
+		'as'=>'admin.ajax.ajaxATSale']);
+    Route::get("ajax/ajaxSArticle",['uses'=>'ajaxController@ajaxSArticle',
+		'as'=>'admin.ajax.ajaxSArticle']);
+    Route::get("ajax/ajaxATEntry",['uses'=>'ajaxController@ajaxATEntry',
+		'as'=>'admin.ajax.ajaxATEntry']);
 	Route::get('/dashboard', ['uses'=>'HomeController@index',
 		'as'=>'admin.dashboard']);
     

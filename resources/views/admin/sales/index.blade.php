@@ -39,7 +39,7 @@
 					<tr>
 						<td>{{$sale->customer->name}}</td>
 						<td>{{$sale->type_voucher}}:{{$sale->serie_voucher}}-{{$sale->num_voucher}}</td>
-						<td>{{$sale->date}}</td>
+						<td>{{$sale->date_sale}}</td>
 						<td>{{$sale->tax}}</td>
 						<td>{{$sale->total}}</td>
 						<td>{{$sale->state}}</td>

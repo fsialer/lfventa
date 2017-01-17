@@ -53,7 +53,7 @@ class SalesController extends Controller
     public function store(SaleRequest $request)
     {
        $sale=new Sale($request->all());
-       $sale->date=\Carbon\Carbon::now('America/Lima');
+       $sale->date_sale=\Carbon\Carbon::now('America/Lima');
        $sale->user_id=\Auth::user()->id;
        $sale->tax=1.8;
        $sale->save();
@@ -132,4 +132,5 @@ class SalesController extends Controller
        }       
         
     }
+    
 }

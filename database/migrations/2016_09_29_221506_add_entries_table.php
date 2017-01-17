@@ -19,11 +19,11 @@ class AddEntriesTable extends Migration
             $table->enum('type_voucher',['factura','boleta'])->default('factura');
             $table->string('serie_voucher',20);
             $table->string('num_voucher',20);
-            $table->datetime('date');
+            $table->datetime('date_entry');
             $table->decimal('tax',4,2);
             $table->decimal('total',11,2);
             $table->timestamps();
-             $table->enum('state',['atendido','cancelado'])->default('atendido');
+            $table->enum('state',['atendido','cancelado'])->default('atendido');
             $table->foreign('provider_id')->references('id')->on('people')->onDelete('cascade');
         });
 

@@ -4,8 +4,8 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file",
         "This file is @generated automatically"
     ],
-    "hash": "abcabfb1c4e5461e192637539443b40c",
-    "content-hash": "65581f53f59c7a19dfdb258470a2421a",
+    "hash": "0094ed977740e5d19a299e5ac46eace2",
+    "content-hash": "4c3fae9fd03ccebb6235eec650272cb2",
     "packages": [
         {
             "name": "barryvdh/laravel-dompdf",
@@ -269,6 +269,51 @@
             "description": "DOMPDF is a CSS 2.1 compliant HTML to PDF converter",
             "homepage": "https://github.com/dompdf/dompdf",
             "time": "2016-05-11 00:36:29"
+        },
+        {
+            "name": "fx3costa/laravelchartjs",
+            "version": "2.1.0",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/fxcosta/laravel-chartjs.git",
+                "reference": "f3fd1c0c11f2cdb7fce85d375a026b4ba1fb6164"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/fxcosta/laravel-chartjs/zipball/f3fd1c0c11f2cdb7fce85d375a026b4ba1fb6164",
+                "reference": "f3fd1c0c11f2cdb7fce85d375a026b4ba1fb6164",
+                "shasum": ""
+            },
+            "require": {
+                "illuminate/support": "5.1.* || 5.2.* || 5.3.*",
+                "php": ">=5.6.4"
+            },
+            "type": "library",
+            "autoload": {
+                "psr-4": {
+                    "Fx3costa\\LaravelChartJs\\": "src/"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Felix",
+                    "email": "fx3costa@gmail.com"
+                }
+            ],
+            "description": "Simple package to facilitate and automate the use of charts in Laravel 5.x using Chartjs v2 library",
+            "keywords": [
+                "chart",
+                "chartjs",
+                "fx3costa",
+                "graphics",
+                "laravel5",
+                "reports"
+            ],
+            "time": "2017-01-08 01:43:44"
         },
         {
             "name": "jakub-onderka/php-console-color",

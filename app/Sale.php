@@ -8,7 +8,7 @@ class Sale extends Model
 {
     protected $table="sales";
 
-    protected $fillable=['customer_id','user_id','type_voucher','serie_voucher','num_voucher','date','tax','total'];
+    protected $fillable=['customer_id','user_id','type_voucher','serie_voucher','num_voucher','date_sale','tax','total'];
 
     public function customer(){
     	return $this->belongsTo('App\Person');

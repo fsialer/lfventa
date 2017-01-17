@@ -51,7 +51,7 @@ class EntriesController extends Controller
     public function store(EntryRequest $request)
     {
        $entry=new Entry($request->all());
-       $entry->date=\Carbon\Carbon::now('America/Lima');
+       $entry->date_entry=\Carbon\Carbon::now('America/Lima');
        $entry->tax=1.8;
        $entry->save();
        $data;

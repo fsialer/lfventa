@@ -31,6 +31,15 @@ class HomeController extends Controller
         $entries=Entry::count();
         $sales=Sale::count();
         $users=User::count();
+        
+        ///////
+        
+
+        /////
+        
+        
+        
+        
         return view('welcome')->with('articles',$articles)->with('entries',$entries)->with('sales',$sales)->with('users',$users);
     }
 }

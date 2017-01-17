@@ -8,7 +8,7 @@ class Entry extends Model
 {
      protected $table="entries";
 
-    protected $fillable=['provider_id','type_voucher','serie_voucher','num_voucher','date','tax','total'];
+    protected $fillable=['provider_id','type_voucher','serie_voucher','num_voucher','date_entry','tax','total'];
 
     public function provider(){
     	return $this->belongsTo('App\Person');

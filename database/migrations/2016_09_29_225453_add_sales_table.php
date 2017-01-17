@@ -20,9 +20,10 @@ class AddSalesTable extends Migration
             $table->enum('type_voucher',['factura','boleta'])->default('factura');
             $table->string('serie_voucher',20);
             $table->string('num_voucher',20);
-            $table->dateTime('date');
+            $table->dateTime('date_sale');
             $table->decimal('tax',4,2);
             $table->decimal('total',11,2);
+            $table->enum('state',['atendido','cancelado'])->default('atendido');
             $table->timestamps();
 
             $table->foreign('customer_id')->references('id')->on('people')->onDelete('cascade');
@@ -33,6 +34,7 @@ class AddSalesTable extends Migration
             $table->increments('id');
             $table->integer('article_id')->unsigned();
             $table->integer('sale_id')->unsigned();
+            $table->decimal('price_sale',11,2);
             $table->integer('quantity')->unsigned();
             $table->decimal('discount',11,2);
             $table->timestamps();
